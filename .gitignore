@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.bak_*
+
+# ROS2 / colcon workspace artifacts
+build/
+install/
+log/
+
+# Editor
+.vscode/
+.idea/
