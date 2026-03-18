@@ -23,7 +23,7 @@ sudo apt install -y python3-tk
 ```bash
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
-git clone <YOUR_REPOSITORY_URL> virtual_joy
+git clone https://github.com/YOSHIDA-V/virtual_joy.git virtual_joy
 ```
 
 ## ビルド
