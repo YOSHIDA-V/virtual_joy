@@ -403,8 +403,11 @@ class GamepadCanvas(tk.Canvas):
             *self._xy(48, 20), text='上面', anchor='w', fill='#526771', font=self._font(11, True)
         )
         shell = [
-            (92, 122), (112, 62), (256, 28), (330, 68),
-            (490, 68), (564, 28), (708, 62), (728, 122),
+            (92, 122), (96, 106), (116, 92),
+            (126, 38), (282, 38), (292, 92),
+            (344, 108), (476, 108),
+            (528, 92), (538, 38), (694, 38),
+            (704, 92), (724, 106), (728, 122),
         ]
         points = []
         for point in shell:
@@ -428,10 +431,20 @@ class GamepadCanvas(tk.Canvas):
             *self._xy(48, 160), text='正面', anchor='w', fill='#526771', font=self._font(11, True)
         )
         silhouette = [
-            (80,95 + offset),(245,48 + offset),(330,75 + offset),(410,62 + offset),
-            (490,75 + offset),(575,48 + offset),(740,95 + offset),(770,210 + offset),
-            (710,340 + offset),(625,350 + offset),(535,285 + offset),(285,285 + offset),
-            (195,350 + offset),(110,340 + offset),(50,210 + offset),
+            (50, 185 + offset), (60, 135 + offset), (84, 105 + offset),
+            (118, 82 + offset), (136, 76 + offset), (140, 60 + offset),
+            (218, 60 + offset), (222, 76 + offset), (300, 76 + offset),
+            (338, 88 + offset), (410, 72 + offset), (482, 88 + offset),
+            (520, 76 + offset), (598, 76 + offset), (602, 60 + offset),
+            (680, 60 + offset), (684, 76 + offset), (702, 82 + offset),
+            (736, 105 + offset), (760, 135 + offset), (770, 185 + offset),
+            (770, 245 + offset), (750, 300 + offset), (716, 334 + offset),
+            (680, 350 + offset), (638, 350 + offset), (600, 330 + offset),
+            (548, 292 + offset), (510, 280 + offset), (466, 280 + offset),
+            (442, 300 + offset), (410, 324 + offset), (378, 300 + offset),
+            (354, 280 + offset), (310, 280 + offset), (272, 292 + offset),
+            (220, 330 + offset), (182, 350 + offset), (140, 350 + offset),
+            (104, 334 + offset), (70, 300 + offset), (50, 245 + offset),
         ]
         points = []
         for point in silhouette:
