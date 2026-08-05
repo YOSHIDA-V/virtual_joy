@@ -3,7 +3,7 @@
 `virtual_joy` は、マウス操作で `sensor_msgs/msg/Joy` を生成する ROS 2 (`ament_python`) パッケージです。  
 `virtual_joy` パッケージ単体で完結し、外部の rover gamepad パッケージに依存することなく使用できます。
 
-![virtual_joy UI](images/virtualjoy.png)
+![virtual_joy UI](images/virtualjoy_ui.png)
 
 コントローラーの筐体、ボタン輪郭、状態色、クリック判定は、専用の
 CanvasベクターUIから生成します。輪郭画像と入力領域を別々に管理しないため、
