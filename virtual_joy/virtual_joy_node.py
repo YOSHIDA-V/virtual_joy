@@ -2,6 +2,7 @@
 
 import threading
 import tkinter as tk
+from collections import deque
 from pathlib import Path
 
 import rclpy
@@ -250,6 +251,24 @@ class GamepadCanvas(tk.Canvas):
     STICK_RADIUS = 37
     LEFT_STICK_CENTER = (238, 406)
     RIGHT_STICK_CENTER = (391, 406)
+    FILL_REGIONS = {
+        ('button', 6): ((175, 95), (135, 60, 215, 130)),
+        ('button', 4): ((176, 143), (123, 117, 230, 168)),
+        ('button', 7): ((456, 95), (414, 60, 499, 130)),
+        ('button', 5): ((454, 143), (400, 117, 507, 168)),
+        ('button', 8): ((258, 285), (244, 271, 272, 299)),
+        ('button', 9): ((368, 285), (354, 271, 382, 299)),
+        ('button', 2): ((454, 271), (431, 248, 476, 294)),
+        ('button', 3): ((416, 308), (393, 285, 439, 331)),
+        ('button', 1): ((491, 309), (468, 286, 514, 332)),
+        ('button', 0): ((453, 347), (430, 324, 476, 370)),
+        ('button', 10): ((238, 406), (199, 367, 277, 445)),
+        ('button', 11): ((391, 406), (352, 367, 430, 445)),
+        ('dpad', 'up'): ((175, 277), (154, 257, 197, 308)),
+        ('dpad', 'left'): ((142, 308), (122, 287, 173, 331)),
+        ('dpad', 'right'): ((208, 308), (178, 287, 228, 331)),
+        ('dpad', 'down'): ((175, 340), (154, 317, 198, 362)),
+    }
 
     def __init__(self, parent, state: SharedJoyState):
         super().__init__(parent, bg='#f5f8f9', highlightthickness=0)
@@ -264,6 +283,10 @@ class GamepadCanvas(tk.Canvas):
         if not lineart_path.is_file():
             lineart_path = Path(get_package_share_directory('virtual_joy')) / 'images' / 'controller_lineart.png'
         self._lineart = tk.PhotoImage(file=str(lineart_path)).subsample(2, 2)
+        self._fill_spans = {
+            key: self._extract_fill_spans(*spec)
+            for key, spec in self.FILL_REGIONS.items()
+        }
         self.bind('<Configure>', lambda _event: self.redraw())
         self.bind('<ButtonPress-1>', self._on_press)
         self.bind('<B1-Motion>', self._on_motion)
@@ -299,6 +322,43 @@ class GamepadCanvas(tk.Canvas):
     def _register_region(self, kind, key, logical_box):
         self._regions.append((kind, key, logical_box))
 
+    def _extract_fill_spans(self, seed, bounds):
+        """Flood-fill one closed white region from the displayed line-art pixels."""
+        x1, y1, x2, y2 = bounds
+        queue = deque([seed])
+        visited = set()
+        rows = {}
+        while queue:
+            x, y = queue.popleft()
+            if (x, y) in visited or not (x1 <= x <= x2 and y1 <= y <= y2):
+                continue
+            visited.add((x, y))
+            pixel = self._lineart.get(x, y)
+            if not isinstance(pixel, tuple) or min(pixel[:3]) < 180:
+                continue
+            rows.setdefault(y, []).append(x)
+            queue.extend(((x-1,y),(x+1,y),(x,y-1),(x,y+1)))
+
+        spans = []
+        for y, xs in rows.items():
+            xs.sort()
+            start = end = xs[0]
+            for x in xs[1:]:
+                if x == end + 1:
+                    end = x
+                else:
+                    spans.append((start, y, end + 1, y + 1))
+                    start = end = x
+            spans.append((start, y, end + 1, y + 1))
+        return spans
+
+    def _draw_region_fill(self, kind, key, state):
+        if not state['active']:
+            return
+        color = self._control_color(state['hold'], state['toggle'])
+        for x1, y1, x2, _y2 in self._fill_spans[(kind, key)]:
+            self.create_line(*self._box(x1, y1, x2-1, y1), fill=color, width=1)
+
     def _draw_button(self, index, box, label, button_state, radius=12):
         state = button_state[index]
         fill = self._control_color(state['hold'], state['toggle'])
@@ -313,6 +373,7 @@ class GamepadCanvas(tk.Canvas):
     def _draw_shoulder(self, index, box, label, button_state, rear=False):
         state = button_state[index]
         x1, y1, x2, y2 = box
+        self._draw_region_fill('button', index, state)
         color = '#b16a13' if state['hold'] else ('#2f7755' if state['toggle'] else '#18313d')
         self.create_text(
             *self._xy((x1+x2)/2, (y1+y2)/2),
@@ -326,6 +387,7 @@ class GamepadCanvas(tk.Canvas):
         state = button_state[index]
         x, y = center
         box = (x-14, y-14, x+14, y+14)
+        self._draw_region_fill('button', index, state)
         color = '#b16a13' if state['hold'] else ('#2f7755' if state['toggle'] else '#18313d')
         if symbol == 'select':
             self.create_rectangle(*self._box(x-6, y-4, x+2, y+2), outline=color, width=2)
@@ -349,6 +411,7 @@ class GamepadCanvas(tk.Canvas):
         }
         for key, (box, label) in mapping.items():
             state = dpad_state[key]
+            self._draw_region_fill('dpad', key, state)
             color = '#b16a13' if state['hold'] else ('#2f7755' if state['toggle'] else '#18313d')
             self.create_text(*self._xy((box[0]+box[2])/2, (box[1]+box[3])/2), text=label, fill=color, font=self._font(13, True))
             self._register_region('dpad', key, box)
@@ -364,12 +427,16 @@ class GamepadCanvas(tk.Canvas):
             state = button_state[index]
             x, y = center
             box = (x-21, y-21, x+21, y+21)
+            self._draw_region_fill('button', index, state)
             self.create_text(*self._xy(x, y), text=label, fill=symbol_color, font=self._font(17, True))
             self._register_region('button', index, box)
 
-    def _draw_stick(self, side, center, axes):
+    def _draw_stick(self, side, center, axes, button_state):
         x, y = center
         radius = self.STICK_RADIUS
+        button_index = 10 if side == 'left' else 11
+        state = button_state[button_index]
+        self._draw_region_fill('button', button_index, state)
         if side == 'left':
             vx, vy = axes[0], axes[1]
         else:
@@ -392,8 +459,8 @@ class GamepadCanvas(tk.Canvas):
         self._register_region('button', 12, (301, 270, 326, 300))
         self._draw_dpad(dpad_state)
         self._draw_face(button_state)
-        self._draw_stick('left', self.LEFT_STICK_CENTER, axes)
-        self._draw_stick('right', self.RIGHT_STICK_CENTER, axes)
+        self._draw_stick('left', self.LEFT_STICK_CENTER, axes, button_state)
+        self._draw_stick('right', self.RIGHT_STICK_CENTER, axes, button_state)
 
     def redraw(self):
         width = max(1, self.winfo_width())
