@@ -403,7 +403,7 @@ class GamepadCanvas(tk.Canvas):
     def redraw(self):
         width = max(1, self.winfo_width())
         height = max(1, self.winfo_height())
-        self._scale = 1.0
+        self._scale = min(width / self.WIDTH, height / self.HEIGHT)
         self._offset_x = (width - self.WIDTH * self._scale) / 2
         self._offset_y = (height - self.HEIGHT * self._scale) / 2
         self.delete('all')
@@ -491,8 +491,8 @@ class VirtualJoyUI:
         self._status_names = {idx: name for idx, name in BUTTON_LAYOUT}
 
         root.title('virtual_joy')
-        root.geometry('860x900')
-        root.minsize(760, 820)
+        root.geometry('670x807')
+        root.minsize(670, 807)
         root.configure(bg=self.BACKGROUND)
 
         header = tk.Frame(root, bg=self.NAVY, height=54)
