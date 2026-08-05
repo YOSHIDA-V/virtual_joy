@@ -8,9 +8,9 @@ from rclpy.node import Node
 from sensor_msgs.msg import Joy
 
 try:
-    from .controller_ui import BODY_SHELL, CONTROLS, TOP_SHELL
+    from .controller_ui import BODY_SHELL, CONTROLS, TOP_SHELL, controller_layout
 except ImportError:
-    from controller_ui import BODY_SHELL, CONTROLS, TOP_SHELL
+    from controller_ui import BODY_SHELL, CONTROLS, TOP_SHELL, controller_layout
 
 
 BUTTON_LAYOUT = [
@@ -260,6 +260,11 @@ class GamepadCanvas(tk.Canvas):
         self._scale = 1.0
         self._offset_x = 0.0
         self._offset_y = 0.0
+        self._transforms = {
+            'top': (1.0, 0.0, 0.0),
+            'body': (1.0, 0.0, 0.0),
+        }
+        self._active_group = 'body'
         self._active_stick = None
         self._active_control = None
         self.bind('<Configure>', lambda _event: self.redraw())
@@ -269,7 +274,8 @@ class GamepadCanvas(tk.Canvas):
         self.bind('<Button-3>', self._on_toggle)
 
     def _xy(self, x, y):
-        return self._offset_x + x * self._scale, self._offset_y + y * self._scale
+        scale, offset_x, offset_y = self._transforms[self._active_group]
+        return offset_x + x * scale, offset_y + y * scale
 
     def _box(self, x1, y1, x2, y2):
         a = self._xy(x1, y1)
@@ -277,7 +283,8 @@ class GamepadCanvas(tk.Canvas):
         return (*a, *b)
 
     def _font(self, size, bold=False):
-        return ('Yu Gothic UI', max(8, int(size * self._scale)), 'bold' if bold else 'normal')
+        scale = self._transforms[self._active_group][0]
+        return ('Yu Gothic UI', max(8, int(size * scale)), 'bold' if bold else 'normal')
 
     def _points(self, points):
         scaled = []
@@ -301,7 +308,9 @@ class GamepadCanvas(tk.Canvas):
             'smooth': True,
             'splinesteps': 24,
         }
+        self._active_group = 'top'
         self.create_polygon(self._points(TOP_SHELL), **style)
+        self._active_group = 'body'
         self.create_polygon(self._points(BODY_SHELL), **style)
 
     def _control_state(self, geometry, button_state, dpad_state):
@@ -354,6 +363,9 @@ class GamepadCanvas(tk.Canvas):
             )
 
     def _draw_control(self, geometry, axes, button_state, dpad_state):
+        self._active_group = (
+            'top' if geometry.kind == 'button' and geometry.key in {4, 5, 6, 7} else 'body'
+        )
         state = self._control_state(geometry, button_state, dpad_state)
         fill = self._control_color(state['hold'], state['toggle'])
         outline = '#b16a13' if state['hold'] else ('#2f7755' if state['toggle'] else '#18313d')
@@ -403,9 +415,8 @@ class GamepadCanvas(tk.Canvas):
     def redraw(self):
         width = max(1, self.winfo_width())
         height = max(1, self.winfo_height())
-        self._scale = min(width / self.WIDTH, height / self.HEIGHT)
-        self._offset_x = (width - self.WIDTH * self._scale) / 2
-        self._offset_y = (height - self.HEIGHT * self._scale) / 2
+        self._layout_mode, self._transforms = controller_layout(width, height)
+        self._scale, self._offset_x, self._offset_y = self._transforms['body']
         self.delete('all')
         self._control_tags.clear()
         axes, _buttons, button_state, dpad_state = self._state.ui_snapshot()
@@ -415,7 +426,8 @@ class GamepadCanvas(tk.Canvas):
             self._draw_control(geometry, axes, button_state, dpad_state)
 
     def _logical_point(self, event):
-        return (event.x - self._offset_x) / self._scale, (event.y - self._offset_y) / self._scale
+        scale, offset_x, offset_y = self._transforms['body']
+        return (event.x - offset_x) / scale, (event.y - offset_y) / scale
 
     def _hit(self, event):
         items = self.find_overlapping(event.x, event.y, event.x, event.y)

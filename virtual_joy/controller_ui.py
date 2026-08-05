@@ -1,12 +1,13 @@
 """Single-source geometry for the virtual controller UI."""
 
 from dataclasses import dataclass
-from typing import Optional, Tuple, Union
+from typing import Dict, Optional, Tuple, Union
 
 
 Point = Tuple[int, int]
 Box = Tuple[int, int, int, int]
 ControlKey = Union[int, str]
+Transform = Tuple[float, float, float]
 
 
 @dataclass(frozen=True)
@@ -39,6 +40,50 @@ BODY_SHELL: Tuple[Point, ...] = (
     (236, 472), (199, 520), (166, 549), (137, 560), (108, 555),
     (72, 522), (58, 470), (66, 378),
 )
+
+
+STACKED_SIZE = (650, 606)
+TOP_BOUNDS = (105, 55, 525, 185)
+BODY_BOUNDS = (50, 205, 580, 570)
+WIDE_ASPECT_RATIO = 1.65
+
+
+def _fit_bounds(bounds: Box, target: Tuple[float, float, float, float]) -> Transform:
+    source_left, source_top, source_right, source_bottom = bounds
+    target_left, target_top, target_right, target_bottom = target
+    source_width = source_right - source_left
+    source_height = source_bottom - source_top
+    target_width = max(1.0, target_right - target_left)
+    target_height = max(1.0, target_bottom - target_top)
+    scale = min(target_width / source_width, target_height / source_height)
+    offset_x = target_left + (target_width - source_width * scale) / 2 - source_left * scale
+    offset_y = target_top + (target_height - source_height * scale) / 2 - source_top * scale
+    return scale, offset_x, offset_y
+
+
+def controller_layout(width: int, height: int) -> Tuple[str, Dict[str, Transform]]:
+    """Return distortion-free transforms for stacked and wide window layouts."""
+    width = max(1, width)
+    height = max(1, height)
+    if width / height < WIDE_ASPECT_RATIO:
+        base_width, base_height = STACKED_SIZE
+        scale = min(width / base_width, height / base_height)
+        transform = (
+            scale,
+            (width - base_width * scale) / 2,
+            (height - base_height * scale) / 2,
+        )
+        return "stacked", {"top": transform, "body": transform}
+
+    padding = max(12.0, min(width, height) * 0.02)
+    gap = padding
+    split_x = width * 0.34
+    top_target = (padding, padding, split_x - gap / 2, height - padding)
+    body_target = (split_x + gap / 2, padding, width - padding, height - padding)
+    return "wide", {
+        "top": _fit_bounds(TOP_BOUNDS, top_target),
+        "body": _fit_bounds(BODY_BOUNDS, body_target),
+    }
 
 
 CONTROLS: Tuple[ControlGeometry, ...] = (

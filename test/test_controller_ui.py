@@ -1,7 +1,14 @@
 import math
 import unittest
 
-from virtual_joy.controller_ui import BODY_SHELL, CONTROLS, TOP_SHELL
+from virtual_joy.controller_ui import (
+    BODY_BOUNDS,
+    BODY_SHELL,
+    CONTROLS,
+    TOP_BOUNDS,
+    TOP_SHELL,
+    controller_layout,
+)
 
 
 def polygon_area(points):
@@ -52,6 +59,32 @@ class ControllerGeometryTest(unittest.TestCase):
         for shell in (TOP_SHELL, BODY_SHELL):
             self.assertGreater(polygon_area(shell), 1000)
             self.assertTrue(all(0 <= x <= 650 and 0 <= y <= 606 for x, y in shell))
+
+    def test_stacked_layout_preserves_reference_scale(self):
+        mode, transforms = controller_layout(650, 606)
+        self.assertEqual(mode, "stacked")
+        self.assertEqual(transforms["top"], transforms["body"])
+        self.assertAlmostEqual(transforms["body"][0], 1.0)
+
+    def test_wide_layout_uses_width_without_distortion(self):
+        width, height = 1900, 879
+        mode, transforms = controller_layout(width, height)
+        self.assertEqual(mode, "wide")
+        self.assertGreater(transforms["body"][0], min(width / 650, height / 606))
+
+        for bounds, transform in ((TOP_BOUNDS, transforms["top"]), (BODY_BOUNDS, transforms["body"])):
+            scale, offset_x, offset_y = transform
+            left, top, right, bottom = bounds
+            transformed = (
+                offset_x + left * scale,
+                offset_y + top * scale,
+                offset_x + right * scale,
+                offset_y + bottom * scale,
+            )
+            self.assertGreaterEqual(transformed[0], 0)
+            self.assertGreaterEqual(transformed[1], 0)
+            self.assertLessEqual(transformed[2], width)
+            self.assertLessEqual(transformed[3], height)
 
 
 if __name__ == "__main__":
