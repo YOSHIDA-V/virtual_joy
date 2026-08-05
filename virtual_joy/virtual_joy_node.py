@@ -2,13 +2,15 @@
 
 import threading
 import tkinter as tk
-from collections import deque
-from pathlib import Path
 
 import rclpy
-from ament_index_python.packages import get_package_share_directory
 from rclpy.node import Node
 from sensor_msgs.msg import Joy
+
+try:
+    from .controller_ui import BODY_SHELL, CONTROLS, TOP_SHELL
+except ImportError:
+    from controller_ui import BODY_SHELL, CONTROLS, TOP_SHELL
 
 
 BUTTON_LAYOUT = [
@@ -243,50 +245,23 @@ class StickCanvas(tk.Frame):
 
 
 class GamepadCanvas(tk.Canvas):
-    # The supplied controller line art is the geometry source of truth.  It is
-    # displayed at half size, so all interactive coordinates below are the
-    # measured source-image coordinates divided by two.
+    """Custom controller UI rendered from one set of vector geometry."""
+
     WIDTH = 650
     HEIGHT = 606
     STICK_RADIUS = 37
     LEFT_STICK_CENTER = (238, 406)
     RIGHT_STICK_CENTER = (391, 406)
-    FILL_REGIONS = {
-        ('button', 6): ((175, 95), (135, 60, 215, 130)),
-        ('button', 4): ((176, 143), (123, 117, 230, 168)),
-        ('button', 7): ((456, 95), (414, 60, 499, 130)),
-        ('button', 5): ((454, 143), (400, 117, 507, 168)),
-        ('button', 8): ((258, 285), (244, 271, 272, 299)),
-        ('button', 9): ((368, 285), (354, 271, 382, 299)),
-        ('button', 2): ((454, 271), (431, 248, 476, 294)),
-        ('button', 3): ((416, 308), (393, 285, 439, 331)),
-        ('button', 1): ((491, 309), (468, 286, 514, 332)),
-        ('button', 0): ((453, 347), (430, 324, 476, 370)),
-        ('button', 10): ((238, 406), (199, 367, 277, 445)),
-        ('button', 11): ((391, 406), (352, 367, 430, 445)),
-        ('dpad', 'up'): ((175, 277), (154, 257, 197, 308)),
-        ('dpad', 'left'): ((142, 308), (122, 287, 173, 331)),
-        ('dpad', 'right'): ((208, 308), (178, 287, 228, 331)),
-        ('dpad', 'down'): ((175, 340), (154, 317, 198, 362)),
-    }
 
     def __init__(self, parent, state: SharedJoyState):
         super().__init__(parent, bg='#f5f8f9', highlightthickness=0)
         self._state = state
-        self._regions = []
+        self._control_tags = {}
         self._scale = 1.0
         self._offset_x = 0.0
         self._offset_y = 0.0
         self._active_stick = None
         self._active_control = None
-        lineart_path = Path(__file__).with_name('controller_lineart.png')
-        if not lineart_path.is_file():
-            lineart_path = Path(get_package_share_directory('virtual_joy')) / 'images' / 'controller_lineart.png'
-        self._lineart = tk.PhotoImage(file=str(lineart_path)).subsample(2, 2)
-        self._fill_spans = {
-            key: self._extract_fill_spans(*spec)
-            for key, spec in self.FILL_REGIONS.items()
-        }
         self.bind('<Configure>', lambda _event: self.redraw())
         self.bind('<ButtonPress-1>', self._on_press)
         self.bind('<B1-Motion>', self._on_motion)
@@ -304,12 +279,11 @@ class GamepadCanvas(tk.Canvas):
     def _font(self, size, bold=False):
         return ('Yu Gothic UI', max(8, int(size * self._scale)), 'bold' if bold else 'normal')
 
-    def _round_rect(self, box, radius, **kwargs):
-        x1, y1, x2, y2 = box
-        r = radius * self._scale
-        points = [x1+r,y1, x2-r,y1, x2,y1, x2,y1+r, x2,y2-r, x2,y2,
-                  x2-r,y2, x1+r,y2, x1,y2, x1,y2-r, x1,y1+r, x1,y1]
-        return self.create_polygon(points, smooth=True, splinesteps=12, **kwargs)
+    def _points(self, points):
+        scaled = []
+        for x, y in points:
+            scaled.extend(self._xy(x, y))
+        return scaled
 
     @staticmethod
     def _control_color(hold, toggle):
@@ -319,148 +293,112 @@ class GamepadCanvas(tk.Canvas):
             return '#65b88b'
         return '#ffffff'
 
-    def _register_region(self, kind, key, logical_box):
-        self._regions.append((kind, key, logical_box))
+    def _draw_shell(self):
+        style = {
+            'fill': '#ffffff',
+            'outline': '#18313d',
+            'width': 2,
+            'smooth': True,
+            'splinesteps': 24,
+        }
+        self.create_polygon(self._points(TOP_SHELL), **style)
+        self.create_polygon(self._points(BODY_SHELL), **style)
 
-    def _extract_fill_spans(self, seed, bounds):
-        """Flood-fill one closed white region from the displayed line-art pixels."""
-        x1, y1, x2, y2 = bounds
-        queue = deque([seed])
-        visited = set()
-        rows = {}
-        while queue:
-            x, y = queue.popleft()
-            if (x, y) in visited or not (x1 <= x <= x2 and y1 <= y <= y2):
-                continue
-            visited.add((x, y))
-            pixel = self._lineart.get(x, y)
-            if not isinstance(pixel, tuple) or min(pixel[:3]) < 180:
-                continue
-            rows.setdefault(y, []).append(x)
-            queue.extend(((x-1,y),(x+1,y),(x,y-1),(x,y+1)))
+    def _control_state(self, geometry, button_state, dpad_state):
+        if geometry.kind == 'button':
+            return button_state[geometry.key]
+        if geometry.kind == 'dpad':
+            return dpad_state[geometry.key]
+        button_index = 10 if geometry.key == 'left' else 11
+        return button_state[button_index]
 
-        spans = []
-        for y, xs in rows.items():
-            xs.sort()
-            start = end = xs[0]
-            for x in xs[1:]:
-                if x == end + 1:
-                    end = x
-                else:
-                    spans.append((start, y, end + 1, y + 1))
-                    start = end = x
-            spans.append((start, y, end + 1, y + 1))
-        return spans
+    def _control_center(self, geometry):
+        if geometry.box:
+            x1, y1, x2, y2 = geometry.box
+            return (x1 + x2) / 2, (y1 + y2) / 2
+        xs = [point[0] for point in geometry.points]
+        ys = [point[1] for point in geometry.points]
+        return (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
 
-    def _draw_region_fill(self, kind, key, state):
-        if not state['active']:
-            return
-        color = self._control_color(state['hold'], state['toggle'])
-        for x1, y1, x2, _y2 in self._fill_spans[(kind, key)]:
-            self.create_line(*self._box(x1, y1, x2-1, y1), fill=color, width=1)
-
-    def _draw_button(self, index, box, label, button_state, radius=12):
-        state = button_state[index]
-        fill = self._control_color(state['hold'], state['toggle'])
-        outline = '#b16a13' if state['hold'] else ('#2f7755' if state['toggle'] else '#58707b')
-        width = 3 if state['active'] else 1
-        self._round_rect(self._box(*box), radius, fill=fill, outline=outline, width=width)
-        x = (box[0] + box[2]) / 2
-        y = (box[1] + box[3]) / 2
-        self.create_text(*self._xy(x, y), text=label, fill='#18313d', font=self._font(11, True))
-        self._register_region('button', index, box)
-
-    def _draw_shoulder(self, index, box, label, button_state, rear=False):
-        state = button_state[index]
-        x1, y1, x2, y2 = box
-        self._draw_region_fill('button', index, state)
-        color = '#b16a13' if state['hold'] else ('#2f7755' if state['toggle'] else '#18313d')
-        self.create_text(
-            *self._xy((x1+x2)/2, (y1+y2)/2),
-            text=label,
-            fill=color,
-            font=self._font(11, True),
-        )
-        self._register_region('button', index, box)
-
-    def _draw_center_control(self, index, center, symbol, button_state):
-        state = button_state[index]
+    def _draw_control_icon(self, geometry, center, color, tag):
         x, y = center
-        box = (x-14, y-14, x+14, y+14)
-        self._draw_region_fill('button', index, state)
-        color = '#b16a13' if state['hold'] else ('#2f7755' if state['toggle'] else '#18313d')
-        if symbol == 'select':
-            self.create_rectangle(*self._box(x-6, y-4, x+2, y+2), outline=color, width=2)
-            self.create_rectangle(*self._box(x-2, y-1, x+6, y+5), outline=color, width=2)
-        elif symbol == 'home':
-            roof = []
-            for point in ((x-9,y), (x,y-8), (x+9,y), (x+7,y), (x+7,y+8), (x-7,y+8), (x-7,y)):
-                roof.extend(self._xy(*point))
-            self.create_polygon(roof, fill='#18313d', outline='')
-        else:
+        common = {'fill': color, 'tags': (tag,)}
+        if geometry.label == 'select':
+            self.create_rectangle(
+                *self._box(x-6, y-4, x+2, y+2),
+                outline=color,
+                width=2,
+                tags=(tag,),
+            )
+            self.create_rectangle(
+                *self._box(x-2, y-1, x+6, y+5),
+                outline=color,
+                width=2,
+                tags=(tag,),
+            )
+        elif geometry.label == 'menu':
             for dy in (-4, 0, 4):
-                self.create_line(*self._box(x-6, y+dy, x+6, y+dy), fill=color, width=2)
-        self._register_region('button', index, box)
-
-    def _draw_dpad(self, dpad_state):
-        mapping = {
-            'up': ((156, 259, 194, 306), '▲'),
-            'left': ((124, 289, 171, 328), '◀'),
-            'right': ((180, 289, 226, 328), '▶'),
-            'down': ((156, 319, 195, 360), '▼'),
-        }
-        for key, (box, label) in mapping.items():
-            state = dpad_state[key]
-            self._draw_region_fill('dpad', key, state)
-            color = '#b16a13' if state['hold'] else ('#2f7755' if state['toggle'] else '#18313d')
-            self.create_text(*self._xy((box[0]+box[2])/2, (box[1]+box[3])/2), text=label, fill=color, font=self._font(13, True))
-            self._register_region('dpad', key, box)
-
-    def _draw_face(self, button_state):
-        controls = {
-            2: ((454, 271), '△', '#3b9b72'),
-            3: ((416, 308), '□', '#bf5b85'),
-            1: ((491, 309), '○', '#d65b56'),
-            0: ((453, 347), '×', '#397fb2'),
-        }
-        for index, (center, label, symbol_color) in controls.items():
-            state = button_state[index]
-            x, y = center
-            box = (x-21, y-21, x+21, y+21)
-            self._draw_region_fill('button', index, state)
-            self.create_text(*self._xy(x, y), text=label, fill=symbol_color, font=self._font(17, True))
-            self._register_region('button', index, box)
-
-    def _draw_stick(self, side, center, axes, button_state):
-        x, y = center
-        radius = self.STICK_RADIUS
-        button_index = 10 if side == 'left' else 11
-        state = button_state[button_index]
-        self._draw_region_fill('button', button_index, state)
-        if side == 'left':
-            vx, vy = axes[0], axes[1]
+                self.create_line(
+                    *self._box(x-6, y+dy, x+6, y+dy),
+                    fill=color,
+                    width=2,
+                    tags=(tag,),
+                )
         else:
-            vx, vy = axes[3], axes[4]
-        kx, ky = x + vx * radius, y - vy * radius
-        if abs(vx) > 0.001 or abs(vy) > 0.001:
-            self.create_oval(*self._box(kx-7, ky-7, kx+7, ky+7), fill='#147d96', outline='')
-        self.create_text(*self._xy(x, y), text='L3' if side == 'left' else 'R3', fill='#526771', font=self._font(9, True))
-        self._register_region('stick', side, (x-radius, y-radius, x+radius, y+radius))
+            size = 17 if geometry.kind == 'button' and geometry.key in {0, 1, 2, 3} else 11
+            self.create_text(
+                *self._xy(x, y),
+                text=geometry.label,
+                font=self._font(size, True),
+                **common,
+            )
 
-    def _draw_top_view(self, button_state):
-        self._draw_shoulder(6, (138, 64, 212, 127), 'L2', button_state, rear=True)
-        self._draw_shoulder(4, (126, 121, 227, 165), 'L1', button_state)
-        self._draw_shoulder(7, (418, 64, 495, 127), 'R2', button_state, rear=True)
-        self._draw_shoulder(5, (403, 121, 504, 165), 'R1', button_state)
+    def _draw_control(self, geometry, axes, button_state, dpad_state):
+        state = self._control_state(geometry, button_state, dpad_state)
+        fill = self._control_color(state['hold'], state['toggle'])
+        outline = '#b16a13' if state['hold'] else ('#2f7755' if state['toggle'] else '#18313d')
+        width = 3 if state['active'] else 2
+        tag = 'control:{}:{}'.format(geometry.kind, geometry.key)
+        self._control_tags[tag] = (geometry.kind, geometry.key)
 
-    def _draw_front_view(self, axes, button_state, dpad_state):
-        self._draw_center_control(8, (258, 285), 'select', button_state)
-        self._draw_center_control(9, (368, 285), 'menu', button_state)
-        self._register_region('button', 12, (301, 270, 326, 300))
-        self._draw_dpad(dpad_state)
-        self._draw_face(button_state)
-        self._draw_stick('left', self.LEFT_STICK_CENTER, axes, button_state)
-        self._draw_stick('right', self.RIGHT_STICK_CENTER, axes, button_state)
+        if geometry.shape == 'oval':
+            self.create_oval(
+                *self._box(*geometry.box),
+                fill=fill,
+                outline=outline,
+                width=width,
+                tags=(tag,),
+            )
+        else:
+            self.create_polygon(
+                self._points(geometry.points),
+                fill=fill,
+                outline=outline,
+                width=width,
+                smooth=geometry.smooth,
+                splinesteps=16,
+                tags=(tag,),
+            )
+
+        center = self._control_center(geometry)
+        icon_color = outline if state['active'] else geometry.symbol_color
+        self._draw_control_icon(geometry, center, icon_color, tag)
+
+        if geometry.kind == 'stick':
+            if geometry.key == 'left':
+                vx, vy = axes[0], axes[1]
+            else:
+                vx, vy = axes[3], axes[4]
+            if abs(vx) > 0.001 or abs(vy) > 0.001:
+                x, y = center
+                kx = x + vx * self.STICK_RADIUS
+                ky = y - vy * self.STICK_RADIUS
+                self.create_oval(
+                    *self._box(kx-7, ky-7, kx+7, ky+7),
+                    fill='#147d96',
+                    outline='',
+                    tags=(tag,),
+                )
 
     def redraw(self):
         width = max(1, self.winfo_width())
@@ -469,21 +407,23 @@ class GamepadCanvas(tk.Canvas):
         self._offset_x = (width - self.WIDTH * self._scale) / 2
         self._offset_y = (height - self.HEIGHT * self._scale) / 2
         self.delete('all')
-        self._regions.clear()
+        self._control_tags.clear()
         axes, _buttons, button_state, dpad_state = self._state.ui_snapshot()
 
-        self.create_image(*self._xy(0, 0), image=self._lineart, anchor='nw')
-        self._draw_top_view(button_state)
-        self._draw_front_view(axes, button_state, dpad_state)
+        self._draw_shell()
+        for geometry in CONTROLS:
+            self._draw_control(geometry, axes, button_state, dpad_state)
 
     def _logical_point(self, event):
         return (event.x - self._offset_x) / self._scale, (event.y - self._offset_y) / self._scale
 
     def _hit(self, event):
-        x, y = self._logical_point(event)
-        for kind, key, (x1, y1, x2, y2) in reversed(self._regions):
-            if x1 <= x <= x2 and y1 <= y <= y2:
-                return kind, key
+        items = self.find_overlapping(event.x, event.y, event.x, event.y)
+        for item in reversed(items):
+            for tag in self.gettags(item):
+                control = self._control_tags.get(tag)
+                if control:
+                    return control
         return None, None
 
     def _set_hold(self, kind, key, value):

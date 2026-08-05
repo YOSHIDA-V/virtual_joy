@@ -5,6 +5,10 @@
 
 ![virtual_joy UI](images/virtualjoy.png)
 
+コントローラーの筐体、ボタン輪郭、状態色、クリック判定は、専用の
+CanvasベクターUIから生成します。輪郭画像と入力領域を別々に管理しないため、
+表示と操作判定のずれを防ぎます。
+
 ## 前提環境
 
 - Ubuntu Linux - Jammy Jellyfish (22.04)
