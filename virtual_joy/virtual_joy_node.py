@@ -74,6 +74,14 @@ class SharedJoyState:
     def reset_stick(self, side: str):
         self.set_stick(side, 0.0, 0.0)
 
+    def reset_all(self):
+        with self._lock:
+            self._axes = [0.0] * 8
+            self._button_hold = [False] * len(BUTTON_LAYOUT)
+            self._button_toggle = [False] * len(BUTTON_LAYOUT)
+            self._dpad_hold = {key: False for key in DPAD_DIRECTIONS}
+            self._dpad_toggle = {key: False for key in DPAD_DIRECTIONS}
+
     def _dpad_axes(self):
         left_active = self._dpad_hold['left'] or self._dpad_toggle['left']
         right_active = self._dpad_hold['right'] or self._dpad_toggle['right']
@@ -152,7 +160,7 @@ class VirtualJoyNode(Node):
 
 class StickCanvas(tk.Frame):
     def __init__(self, parent, label: str, side: str, state: SharedJoyState, scale: float = 1.0):
-        super().__init__(parent)
+        super().__init__(parent, bg='#eef2f4')
         self._label_text = label
         self._side = side
         self._state = state
@@ -160,9 +168,16 @@ class StickCanvas(tk.Frame):
         self._knob_radius = 12
         self._center = 60
 
-        self._label = tk.Label(self, text=label)
+        self._label = tk.Label(self, text=label, bg='#eef2f4', fg='#18313d')
         self._label.pack(pady=(0, 2))
-        self._canvas = tk.Canvas(self, width=120, height=120, bg='white', highlightthickness=1)
+        self._canvas = tk.Canvas(
+            self,
+            width=120,
+            height=120,
+            bg='#ffffff',
+            highlightbackground='#90a0a8',
+            highlightthickness=1,
+        )
         self._canvas.pack()
         self._knob = None
 
@@ -184,12 +199,12 @@ class StickCanvas(tk.Frame):
         self._canvas.delete('all')
         c = self._center
         r = self._radius
-        self._canvas.create_oval(c - r, c - r, c + r, c + r, outline='#666', width=2)
-        self._canvas.create_line(c - r, c, c + r, c, fill='#ddd')
-        self._canvas.create_line(c, c - r, c, c + r, fill='#ddd')
+        self._canvas.create_oval(c - r, c - r, c + r, c + r, outline='#536873', width=2)
+        self._canvas.create_line(c - r, c, c + r, c, fill='#d4dde1')
+        self._canvas.create_line(c, c - r, c, c + r, fill='#d4dde1')
 
         kr = self._knob_radius
-        self._knob = self._canvas.create_oval(c - kr, c - kr, c + kr, c + kr, fill='#4aa3ff', outline='')
+        self._knob = self._canvas.create_oval(c - kr, c - kr, c + kr, c + kr, fill='#147d96', outline='')
 
         axes, _buttons = self._state.snapshot()
         if self._side == 'left':
@@ -224,282 +239,375 @@ class StickCanvas(tk.Frame):
         self._state.reset_stick(self._side)
 
 
+class GamepadCanvas(tk.Canvas):
+    WIDTH = 820
+    HEIGHT = 390
+
+    def __init__(self, parent, state: SharedJoyState):
+        super().__init__(parent, bg='#f5f8f9', highlightthickness=0)
+        self._state = state
+        self._regions = []
+        self._scale = 1.0
+        self._offset_x = 0.0
+        self._offset_y = 0.0
+        self._active_stick = None
+        self._active_control = None
+        self.bind('<Configure>', lambda _event: self.redraw())
+        self.bind('<ButtonPress-1>', self._on_press)
+        self.bind('<B1-Motion>', self._on_motion)
+        self.bind('<ButtonRelease-1>', self._on_release)
+        self.bind('<Button-3>', self._on_toggle)
+
+    def _xy(self, x, y):
+        return self._offset_x + x * self._scale, self._offset_y + y * self._scale
+
+    def _box(self, x1, y1, x2, y2):
+        a = self._xy(x1, y1)
+        b = self._xy(x2, y2)
+        return (*a, *b)
+
+    def _font(self, size, bold=False):
+        return ('Yu Gothic UI', max(8, int(size * self._scale)), 'bold' if bold else 'normal')
+
+    def _round_rect(self, box, radius, **kwargs):
+        x1, y1, x2, y2 = box
+        r = radius * self._scale
+        points = [x1+r,y1, x2-r,y1, x2,y1, x2,y1+r, x2,y2-r, x2,y2,
+                  x2-r,y2, x1+r,y2, x1,y2, x1,y2-r, x1,y1+r, x1,y1]
+        return self.create_polygon(points, smooth=True, splinesteps=12, **kwargs)
+
+    @staticmethod
+    def _control_color(hold, toggle):
+        if hold:
+            return '#f0b44d'
+        if toggle:
+            return '#65b88b'
+        return '#ffffff'
+
+    def _register_region(self, kind, key, logical_box):
+        self._regions.append((kind, key, logical_box))
+
+    def _draw_button(self, index, box, label, button_state, radius=12):
+        state = button_state[index]
+        fill = self._control_color(state['hold'], state['toggle'])
+        outline = '#b16a13' if state['hold'] else ('#2f7755' if state['toggle'] else '#58707b')
+        width = 3 if state['active'] else 1
+        self._round_rect(self._box(*box), radius, fill=fill, outline=outline, width=width)
+        x = (box[0] + box[2]) / 2
+        y = (box[1] + box[3]) / 2
+        self.create_text(*self._xy(x, y), text=label, fill='#18313d', font=self._font(11, True))
+        self._register_region('button', index, box)
+
+    def _draw_shoulder(self, index, box, label, button_state, rear=False):
+        state = button_state[index]
+        fill = self._control_color(state['hold'], state['toggle'])
+        outline = '#b16a13' if state['hold'] else ('#2f7755' if state['toggle'] else '#58707b')
+        x1, y1, x2, y2 = box
+        inset = 12 if rear else 5
+        points = []
+        for point in ((x1+inset,y1), (x2-inset,y1), (x2,y2-6), (x2-5,y2),
+                      (x1+5,y2), (x1,y2-6)):
+            points.extend(self._xy(*point))
+        self.create_polygon(
+            points,
+            smooth=True,
+            splinesteps=8,
+            fill=fill,
+            outline=outline,
+            width=3 if state['active'] else 1,
+        )
+        self.create_text(
+            *self._xy((x1+x2)/2, (y1+y2)/2),
+            text=label,
+            fill='#18313d',
+            font=self._font(11, True),
+        )
+        self._register_region('button', index, box)
+
+    def _draw_center_control(self, index, center, symbol, button_state):
+        state = button_state[index]
+        x, y = center
+        box = (x-24, y-19, x+24, y+19)
+        self.create_oval(
+            *self._box(*box),
+            fill=self._control_color(state['hold'], state['toggle']),
+            outline='#58707b',
+            width=3 if state['active'] else 1,
+        )
+        if symbol == 'select':
+            self.create_rectangle(*self._box(x-9, y-6, x+3, y+4), outline='#18313d', width=2)
+            self.create_rectangle(*self._box(x-3, y-2, x+9, y+8), outline='#18313d', width=2)
+        elif symbol == 'home':
+            roof = []
+            for point in ((x-9,y), (x,y-8), (x+9,y), (x+7,y), (x+7,y+8), (x-7,y+8), (x-7,y)):
+                roof.extend(self._xy(*point))
+            self.create_polygon(roof, fill='#18313d', outline='')
+        else:
+            for dy in (-6, 0, 6):
+                self.create_line(*self._box(x-9, y+dy, x+9, y+dy), fill='#18313d', width=2)
+        self._register_region('button', index, box)
+
+    def _draw_dpad(self, dpad_state):
+        mapping = {
+            'up': ((118, 125, 174, 181), '▲'),
+            'left': ((62, 181, 118, 237), '◀'),
+            'right': ((174, 181, 230, 237), '▶'),
+            'down': ((118, 237, 174, 293), '▼'),
+        }
+        for key, (box, label) in mapping.items():
+            state = dpad_state[key]
+            fill = self._control_color(state['hold'], state['toggle'])
+            self._round_rect(self._box(*box), 8, fill=fill, outline='#58707b', width=3 if state['active'] else 1)
+            self.create_text(*self._xy((box[0]+box[2])/2, (box[1]+box[3])/2), text=label, fill='#18313d', font=self._font(15, True))
+            self._register_region('dpad', key, box)
+
+    def _draw_face(self, button_state):
+        controls = {
+            2: ((674, 143), '△', '#3b9b72'),
+            3: ((618, 199), '□', '#bf5b85'),
+            1: ((730, 199), '○', '#d65b56'),
+            0: ((674, 255), '×', '#397fb2'),
+        }
+        for index, (center, label, symbol_color) in controls.items():
+            state = button_state[index]
+            x, y = center
+            box = (x-28, y-28, x+28, y+28)
+            self.create_oval(
+                *self._box(*box),
+                fill=self._control_color(state['hold'], state['toggle']),
+                outline=symbol_color,
+                width=3 if state['active'] else 2,
+            )
+            self.create_text(*self._xy(x, y), text=label, fill=symbol_color, font=self._font(17, True))
+            self._register_region('button', index, box)
+
+    def _draw_stick(self, side, center, axes):
+        x, y = center
+        radius = 45
+        self.create_oval(*self._box(x-radius, y-radius, x+radius, y+radius), fill='#ffffff', outline='#58707b', width=2)
+        self.create_line(*self._box(x-radius, y, x+radius, y), fill='#d1dade')
+        self.create_line(*self._box(x, y-radius, x, y+radius), fill='#d1dade')
+        if side == 'left':
+            vx, vy = axes[0], axes[1]
+        else:
+            vx, vy = axes[3], axes[4]
+        kx, ky = x + vx * radius, y - vy * radius
+        self.create_oval(*self._box(kx-12, ky-12, kx+12, ky+12), fill='#147d96', outline='')
+        self._register_region('stick', side, (x-radius, y-radius, x+radius, y+radius))
+
+    def redraw(self):
+        width = max(1, self.winfo_width())
+        height = max(1, self.winfo_height())
+        self._scale = min(width / self.WIDTH, height / self.HEIGHT)
+        self._offset_x = (width - self.WIDTH * self._scale) / 2
+        self._offset_y = (height - self.HEIGHT * self._scale) / 2
+        self.delete('all')
+        self._regions.clear()
+        axes, _buttons, button_state, dpad_state = self._state.ui_snapshot()
+
+        silhouette = [(80,95),(245,48),(330,75),(410,62),(490,75),(575,48),(740,95),
+                      (770,210),(710,340),(625,350),(535,285),(285,285),(195,350),(110,340),(50,210)]
+        points = []
+        for point in silhouette:
+            points.extend(self._xy(*point))
+        self.create_polygon(points, smooth=True, splinesteps=18, fill='#dfe7ea', outline='#7d9099', width=2)
+
+        self._draw_shoulder(6, (75,38,245,76), 'L2', button_state, rear=True)
+        self._draw_shoulder(4, (88,80,232,112), 'L1', button_state)
+        self._draw_shoulder(7, (575,38,745,76), 'R2', button_state, rear=True)
+        self._draw_shoulder(5, (588,80,732,112), 'R1', button_state)
+        self._draw_center_control(8, (345,141), 'select', button_state)
+        self._draw_center_control(12, (410,141), 'home', button_state)
+        self._draw_center_control(9, (475,141), 'menu', button_state)
+        self._draw_dpad(dpad_state)
+        self._draw_face(button_state)
+        self._draw_stick('left', (305,235), axes)
+        self._draw_stick('right', (515,235), axes)
+        self._draw_button(10, (270,300,340,332), 'L3', button_state, 8)
+        self._draw_button(11, (480,300,550,332), 'R3', button_state, 8)
+        self.create_text(*self._xy(146,310), text='固定移動', fill='#526771', font=self._font(10, True))
+        self.create_text(*self._xy(674,310), text='固定旋回 / 前後', fill='#526771', font=self._font(10, True))
+        self.create_text(*self._xy(305,175), text='左スティック', fill='#526771', font=self._font(10, True))
+        self.create_text(*self._xy(515,175), text='右スティック', fill='#526771', font=self._font(10, True))
+
+    def _logical_point(self, event):
+        return (event.x - self._offset_x) / self._scale, (event.y - self._offset_y) / self._scale
+
+    def _hit(self, event):
+        x, y = self._logical_point(event)
+        for kind, key, (x1, y1, x2, y2) in reversed(self._regions):
+            if x1 <= x <= x2 and y1 <= y <= y2:
+                return kind, key
+        return None, None
+
+    def _set_hold(self, kind, key, value):
+        if kind == 'button':
+            self._state.set_button_hold(key, value)
+        elif kind == 'dpad':
+            self._state.set_dpad_hold(key, value)
+
+    def _on_press(self, event):
+        kind, key = self._hit(event)
+        if kind == 'stick':
+            self._active_stick = key
+            self._update_stick(event, key)
+        else:
+            self._active_control = (kind, key) if kind in {'button', 'dpad'} else None
+            self._set_hold(kind, key, True)
+
+    def _on_motion(self, event):
+        if self._active_stick:
+            self._update_stick(event, self._active_stick)
+
+    def _update_stick(self, event, side):
+        center = (305,235) if side == 'left' else (515,235)
+        x, y = self._logical_point(event)
+        dx, dy = x-center[0], y-center[1]
+        length = (dx*dx + dy*dy) ** 0.5
+        if length > 45:
+            dx, dy = dx*45/length, dy*45/length
+        self._state.set_stick(side, dx/45, -dy/45)
+
+    def _on_release(self, event):
+        if self._active_stick:
+            self._state.reset_stick(self._active_stick)
+            self._active_stick = None
+        elif self._active_control:
+            kind, key = self._active_control
+            self._set_hold(kind, key, False)
+            self._active_control = None
+
+    def _on_toggle(self, event):
+        kind, key = self._hit(event)
+        if kind == 'button':
+            self._state.toggle_button(key)
+        elif kind == 'dpad':
+            self._state.toggle_dpad(key)
+
+
 class VirtualJoyUI:
+    BACKGROUND = '#e8edef'
+    PANEL = '#f8fafb'
+    CONTROLLER = '#eef2f4'
+    TEXT = '#18313d'
+    MUTED = '#526771'
+    NAVY = '#142f3d'
+    BUTTON = '#ffffff'
+    HOLD = '#f0b44d'
+    TOGGLE = '#65b88b'
+
     def __init__(self, root: tk.Tk, shared_state: SharedJoyState):
         self._root = root
         self._state = shared_state
-        self._button_widgets = {}
-        self._dpad_widgets = {}
-        self._base_ui_scale = 0.58
-        self._ui_scale = self._base_ui_scale
-        self._layout_density = 1.0
-        self._resize_after_id = None
-        self._enforcing_aspect = False
-        self._base_win_w = 620
-        self._base_win_h = 360
-        self._aspect_n = 31
-        self._aspect_d = 18
+        self._status_names = {idx: name for idx, name in BUTTON_LAYOUT}
 
-        root.title('Virtual Joy (PS3-like)')
-        root.geometry(f'{self._base_win_w}x{self._base_win_h}')
-        root.wm_aspect(self._aspect_n, self._aspect_d, self._aspect_n, self._aspect_d)
+        root.title('virtual_joy')
+        root.geometry('860x590')
+        root.minsize(760, 550)
+        root.configure(bg=self.BACKGROUND)
 
-        self._top = tk.Frame(root, padx=self._s(8), pady=self._s(8))
-        self._top.pack(fill='both', expand=True)
-
-        self._pad = tk.LabelFrame(self._top, text='PS3-like Controller', padx=self._s(10), pady=self._s(10))
-        self._pad.pack(fill='both', expand=True)
-
-        for i in range(9):
-            self._pad.columnconfigure(i, weight=1)
-        for i in range(7):
-            self._pad.rowconfigure(i, weight=1)
-
-        self._add_ps_button(self._pad, 4, 0, 1, width=4, height=1)
-        self._add_ps_button(self._pad, 6, 1, 1, width=4, height=1)
-        self._add_ps_button(self._pad, 5, 0, 7, width=4, height=1)
-        self._add_ps_button(self._pad, 7, 1, 7, width=4, height=1)
-
-        self._add_ps_button(self._pad, 8, 3, 3, width=4, height=1)
-        self._add_ps_button(self._pad, 12, 3, 4, width=4, height=1)
-        self._add_ps_button(self._pad, 9, 3, 5, width=4, height=1)
-
-        self._dpad_frame = tk.LabelFrame(self._pad, text='D-Pad', padx=self._s(6), pady=self._s(6))
-        self._dpad_frame.grid(row=2, column=1, rowspan=3, sticky='n')
-        self._build_dpad(self._dpad_frame)
-
-        self._face_frame = tk.LabelFrame(self._pad, text='Face', padx=self._s(6), pady=self._s(6))
-        self._face_frame.grid(row=2, column=7, rowspan=3, sticky='n')
-        self._build_face_cluster(self._face_frame)
-
-        self._left_stick_frame = tk.LabelFrame(self._pad, text='Left Stick', padx=self._s(2), pady=self._s(2))
-        self._left_stick_frame.grid(row=4, column=2, rowspan=2, columnspan=2, sticky='n')
-        self._left_stick_canvas = StickCanvas(
-            self._left_stick_frame, 'L', 'left', shared_state, scale=self._ui_scale
+        header = tk.Frame(root, bg=self.NAVY, height=54)
+        header.pack(fill='x')
+        header.pack_propagate(False)
+        tk.Label(
+            header,
+            text='virtual_joy',
+            bg=self.NAVY,
+            fg='white',
+            font=('Yu Gothic UI', 20, 'bold'),
+        ).pack(side='left', padx=(18, 8))
+        tk.Label(
+            header,
+            text='仮想コントローラー',
+            bg=self.NAVY,
+            fg='#c7d7de',
+            font=('Yu Gothic UI', 11),
+        ).pack(side='left', pady=(6, 0))
+        self._input_state = tk.Label(
+            header,
+            text='● 入力待機中',
+            bg='#244b5b',
+            fg='white',
+            font=('Yu Gothic UI', 11, 'bold'),
+            padx=12,
+            pady=6,
         )
-        self._left_stick_canvas.pack()
+        self._input_state.pack(side='right', padx=14)
 
-        self._right_stick_frame = tk.LabelFrame(self._pad, text='Right Stick', padx=self._s(2), pady=self._s(2))
-        self._right_stick_frame.grid(row=4, column=5, rowspan=2, columnspan=2, sticky='n')
-        self._right_stick_canvas = StickCanvas(
-            self._right_stick_frame, 'R', 'right', shared_state, scale=self._ui_scale
-        )
-        self._right_stick_canvas.pack()
+        body = tk.Frame(root, bg=self.BACKGROUND, padx=10, pady=8)
+        body.pack(fill='both', expand=True)
+        self._gamepad = GamepadCanvas(body, shared_state)
+        self._gamepad.pack(fill='both', expand=True)
+        tk.Label(
+            body,
+            text='△ 前進　× 後退　□ 左旋回　○ 右旋回　｜　R1 低速　L1 中速　R2 標準　L2 高速',
+            bg=self.BACKGROUND,
+            fg=self.MUTED,
+            font=('Yu Gothic UI', 10),
+        ).pack(pady=(3, 0))
 
-        self._add_ps_button(self._pad, 10, 6, 3, width=3, height=1)
-        self._add_ps_button(self._pad, 11, 6, 5, width=3, height=1)
-
-        status_font = ('Segoe UI', max(8, int(round(9 * self._ui_scale))))
-        self._status = tk.Label(root, anchor='w', padx=self._s(8), font=status_font)
-        self._status.pack(fill='x', pady=(self._s(2), self._s(6)))
-
-        self._help = tk.Label(
-            root,
-            text='Left click: hold  |  Right click: toggle  |  Stick: left-drag and release to center',
+        footer = tk.Frame(root, bg=self.PANEL, padx=12, pady=8)
+        footer.pack(fill='x')
+        self._status = tk.Label(
+            footer,
             anchor='w',
-            padx=self._s(8),
-            font=status_font,
+            justify='left',
+            bg=self.PANEL,
+            fg=self.TEXT,
+            font=('Cascadia Mono', 10),
         )
-        self._help.pack(fill='x', pady=(0, self._s(8)))
-
-        root.update_idletasks()
-        min_w = root.winfo_reqwidth()
-        min_h = root.winfo_reqheight()
-        root.minsize(min_w, min_h)
-        root.geometry(f'{min_w}x{min_h}')
-        self._base_win_w = min_w
-        self._base_win_h = min_h
-        root.bind('<Configure>', self._on_root_resize)
-        self._apply_scale()
+        self._status.pack(fill='x')
+        help_row = tk.Frame(footer, bg=self.PANEL)
+        help_row.pack(fill='x', pady=(7, 0))
+        self._help = tk.Label(
+            help_row,
+            text='左: ホールド　　右: 固定　　スティック: ドラッグ',
+            anchor='w',
+            bg=self.PANEL,
+            fg=self.MUTED,
+            font=('Yu Gothic UI', 10),
+        )
+        self._help.pack(side='left', fill='x', expand=True)
+        tk.Button(
+            help_row,
+            text='すべての入力を解除',
+            command=self._reset_all,
+            bg='#b4443e',
+            fg='white',
+            activebackground='#943732',
+            activeforeground='white',
+            font=('Yu Gothic UI', 11, 'bold'),
+            padx=12,
+            pady=5,
+            bd=0,
+        ).pack(side='right')
 
         self._refresh_ui()
 
-    def _s(self, value: int) -> int:
-        return max(1, int(round(value * self._ui_scale * self._layout_density)))
-
-    def _btn_h(self, base_height: int = 1) -> int:
-        ratio = self._ui_scale / max(0.01, self._base_ui_scale)
-        return max(1, int(round(base_height * max(1.0, ratio * 0.65))))
-
-    def _bind_button_events(self, widget: tk.Widget, on_hold, on_toggle):
-        widget.bind('<ButtonPress-1>', lambda _e: on_hold(True))
-        widget.bind('<ButtonRelease-1>', lambda _e: on_hold(False))
-        widget.bind('<Button-3>', lambda _e: (on_toggle(), 'break')[1])
-
-    def _add_ps_button(self, parent, index, row, col, width=5, height=1):
-        labels = {idx: name for idx, name in BUTTON_LAYOUT}
-        text = DISPLAY_LABELS.get(index, labels[index])
-        base_width = width
-        btn = tk.Button(
-            parent,
-            text=text,
-            width=max(2, int(round(base_width * self._ui_scale))),
-            height=self._btn_h(height),
-            bg='#f0f0f0',
-            font=('Segoe UI', max(8, int(round(9 * self._ui_scale)))),
-        )
-        btn._base_width = base_width
-        btn._base_height = height
-        btn.grid(row=row, column=col, padx=self._s(3), pady=self._s(3), sticky='nsew')
-        self._bind_button_events(
-            btn,
-            on_hold=lambda pressed, i=index: self._state.set_button_hold(i, pressed),
-            on_toggle=lambda i=index: self._state.toggle_button(i),
-        )
-        self._button_widgets[index] = btn
-
-    def _build_face_cluster(self, parent):
-        placements = {
-            2: (0, 1),
-            3: (1, 0),
-            1: (1, 2),
-            0: (2, 1),
-        }
-        for idx, (row, col) in placements.items():
-            self._add_ps_button(parent, idx, row, col, width=4, height=1)
-
-    def _build_dpad(self, parent):
-        mapping = {
-            'up': ('UP', 0, 1),
-            'left': ('LEFT', 1, 0),
-            'right': ('RIGHT', 1, 2),
-            'down': ('DOWN', 2, 1),
-        }
-
-        for key, (label, row, col) in mapping.items():
-            base_width = 4
-            btn = tk.Button(
-                parent,
-                text=label,
-                width=max(2, int(round(base_width * self._ui_scale))),
-                height=self._btn_h(1),
-                bg='#f0f0f0',
-                font=('Segoe UI', max(8, int(round(9 * self._ui_scale)))),
-            )
-            btn._base_width = base_width
-            btn._base_height = 1
-            btn.grid(row=row, column=col, padx=self._s(3), pady=self._s(3))
-            self._bind_button_events(
-                btn,
-                on_hold=lambda pressed, d=key: self._state.set_dpad_hold(d, pressed),
-                on_toggle=lambda d=key: self._state.toggle_dpad(d),
-            )
-            self._dpad_widgets[key] = btn
-
-    @staticmethod
-    def _color_for_state(active: bool, hold: bool, toggle: bool):
-        if hold:
-            return '#f6c667'
-        if toggle:
-            return '#87d37c'
-        if active:
-            return '#9ec9ff'
-        return '#f0f0f0'
+    def _reset_all(self):
+        self._state.reset_all()
 
     def _refresh_ui(self):
-        axes, buttons, button_state, dpad_state = self._state.ui_snapshot()
+        axes, _buttons, button_state, dpad_state = self._state.ui_snapshot()
+        active_names = []
+        active_names.extend(self._status_names[index] for index, state in enumerate(button_state) if state['active'])
+        active_names.extend({'up':'上','left':'左','right':'右','down':'下'}[key] for key, state in dpad_state.items() if state['active'])
 
-        for idx, widget in self._button_widgets.items():
-            st = button_state[idx]
-            color = self._color_for_state(st['active'], st['hold'], st['toggle'])
-            widget.configure(bg=color, activebackground=color)
-
-        for key, widget in self._dpad_widgets.items():
-            st = dpad_state[key]
-            color = self._color_for_state(st['active'], st['hold'], st['toggle'])
-            widget.configure(bg=color, activebackground=color)
-
-        self._status.configure(text=f'axes={axes}  buttons={buttons}')
-        self._root.after(50, self._refresh_ui)
-
-    def _on_root_resize(self, event):
-        if event.widget is not self._root or self._enforcing_aspect:
-            return
-        if self._enforce_aspect_ratio(event.width, event.height):
-            return
-        if self._resize_after_id is not None:
-            self._root.after_cancel(self._resize_after_id)
-        self._resize_after_id = self._root.after(60, self._apply_resize_scale)
-
-    def _enforce_aspect_ratio(self, width: int, height: int) -> bool:
-        target_w = int(round(height * self._aspect_n / self._aspect_d))
-        target_h = int(round(width * self._aspect_d / self._aspect_n))
-        if abs(target_w - width) <= abs(target_h - height):
-            new_w = target_w
-            new_h = height
-        else:
-            new_w = width
-            new_h = target_h
-
-        new_w = max(self._base_win_w, new_w)
-        new_h = max(self._base_win_h, new_h)
-        if abs(new_w - width) <= 1 and abs(new_h - height) <= 1:
-            return False
-
-        self._enforcing_aspect = True
-        try:
-            self._root.geometry(f'{new_w}x{new_h}')
-        finally:
-            self._root.after(30, lambda: setattr(self, '_enforcing_aspect', False))
-        return True
-
-    def _apply_resize_scale(self):
-        self._resize_after_id = None
-        width_ratio = self._root.winfo_width() / max(1, self._base_win_w)
-        height_ratio = self._root.winfo_height() / max(1, self._base_win_h)
-        ratio = min(width_ratio, height_ratio)
-        new_scale = max(self._base_ui_scale, min(self._base_ui_scale * ratio, self._base_ui_scale * 4.2))
-        screen_w = max(1, self._root.winfo_screenwidth())
-        screen_h = max(1, self._root.winfo_screenheight())
-        is_near_fullscreen = (
-            self._root.winfo_width() >= int(screen_w * 0.92)
-            or self._root.winfo_height() >= int(screen_h * 0.92)
+        active_text = '、'.join(active_names) if active_names else 'なし'
+        self._status.configure(
+            text=(
+                f'左 X {axes[0]:+0.2f}  Y {axes[1]:+0.2f}　 '
+                f'右 X {axes[3]:+0.2f}  Y {axes[4]:+0.2f}　 '
+                f'十字 X {axes[6]:+0.0f}  Y {axes[7]:+0.0f}\n'
+                f'入力中: {active_text}'
+            )
         )
-        new_density = min(1.6, max(1.0, ratio ** 0.35))
-        if is_near_fullscreen:
-            new_density = max(new_density, 1.25)
-
-        if abs(new_scale - self._ui_scale) < 0.03 and abs(new_density - self._layout_density) < 0.01:
-            return
-        self._ui_scale = new_scale
-        self._layout_density = new_density
-        self._apply_scale()
-
-    def _apply_scale(self):
-        button_font = ('Segoe UI', max(8, int(round(9 * self._ui_scale))))
-        status_font = ('Segoe UI', max(8, int(round(9 * self._ui_scale))))
-        frame_font = ('Segoe UI', max(8, int(round(10 * self._ui_scale))), 'bold')
-
-        self._top.configure(padx=self._s(8), pady=self._s(8))
-        self._pad.configure(padx=self._s(10), pady=self._s(10), font=frame_font)
-        self._dpad_frame.configure(padx=self._s(6), pady=self._s(6), font=frame_font)
-        self._face_frame.configure(padx=self._s(6), pady=self._s(6), font=frame_font)
-        self._left_stick_frame.configure(padx=self._s(2), pady=self._s(2), font=frame_font)
-        self._right_stick_frame.configure(padx=self._s(2), pady=self._s(2), font=frame_font)
-
-        for widget in self._button_widgets.values():
-            widget.configure(
-                width=max(2, int(round(widget._base_width * self._ui_scale))),
-                height=self._btn_h(widget._base_height),
-                font=button_font,
-            )
-            widget.grid_configure(padx=self._s(3), pady=self._s(3))
-
-        for widget in self._dpad_widgets.values():
-            widget.configure(
-                width=max(2, int(round(widget._base_width * self._ui_scale))),
-                height=self._btn_h(widget._base_height),
-                font=button_font,
-            )
-            widget.grid_configure(padx=self._s(3), pady=self._s(3))
-
-        self._left_stick_canvas.set_scale(self._ui_scale)
-        self._right_stick_canvas.set_scale(self._ui_scale)
-
-        self._status.configure(font=status_font, padx=self._s(8))
-        self._status.pack_configure(pady=(self._s(2), self._s(6)))
-        self._help.configure(font=status_font, padx=self._s(8))
-        self._help.pack_configure(pady=(0, self._s(8)))
+        self._input_state.configure(
+            text='● 入力中' if active_names or any(abs(value) > 0.001 for value in axes) else '● 入力待機中',
+            bg='#9a6510' if active_names or any(abs(value) > 0.001 for value in axes) else '#244b5b',
+        )
+        self._gamepad.redraw()
+        self._root.after(50, self._refresh_ui)
 
 
 def main(args=None):
