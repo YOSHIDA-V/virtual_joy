@@ -241,7 +241,8 @@ class StickCanvas(tk.Frame):
 
 class GamepadCanvas(tk.Canvas):
     WIDTH = 820
-    HEIGHT = 390
+    HEIGHT = 520
+    FRONT_Y = 140
 
     def __init__(self, parent, state: SharedJoyState):
         super().__init__(parent, bg='#f5f8f9', highlightthickness=0)
@@ -348,11 +349,12 @@ class GamepadCanvas(tk.Canvas):
         self._register_region('button', index, box)
 
     def _draw_dpad(self, dpad_state):
+        offset = self.FRONT_Y
         mapping = {
-            'up': ((118, 125, 174, 181), '▲'),
-            'left': ((62, 181, 118, 237), '◀'),
-            'right': ((174, 181, 230, 237), '▶'),
-            'down': ((118, 237, 174, 293), '▼'),
+            'up': ((118, 125 + offset, 174, 181 + offset), '▲'),
+            'left': ((62, 181 + offset, 118, 237 + offset), '◀'),
+            'right': ((174, 181 + offset, 230, 237 + offset), '▶'),
+            'down': ((118, 237 + offset, 174, 293 + offset), '▼'),
         }
         for key, (box, label) in mapping.items():
             state = dpad_state[key]
@@ -362,11 +364,12 @@ class GamepadCanvas(tk.Canvas):
             self._register_region('dpad', key, box)
 
     def _draw_face(self, button_state):
+        offset = self.FRONT_Y
         controls = {
-            2: ((674, 143), '△', '#3b9b72'),
-            3: ((618, 199), '□', '#bf5b85'),
-            1: ((730, 199), '○', '#d65b56'),
-            0: ((674, 255), '×', '#397fb2'),
+            2: ((674, 143 + offset), '△', '#3b9b72'),
+            3: ((618, 199 + offset), '□', '#bf5b85'),
+            1: ((730, 199 + offset), '○', '#d65b56'),
+            0: ((674, 255 + offset), '×', '#397fb2'),
         }
         for index, (center, label, symbol_color) in controls.items():
             state = button_state[index]
@@ -395,6 +398,67 @@ class GamepadCanvas(tk.Canvas):
         self.create_oval(*self._box(kx-12, ky-12, kx+12, ky+12), fill='#147d96', outline='')
         self._register_region('stick', side, (x-radius, y-radius, x+radius, y+radius))
 
+    def _draw_top_view(self, button_state):
+        self.create_text(
+            *self._xy(48, 20), text='上面', anchor='w', fill='#526771', font=self._font(11, True)
+        )
+        shell = [
+            (92, 122), (112, 62), (256, 28), (330, 68),
+            (490, 68), (564, 28), (708, 62), (728, 122),
+        ]
+        points = []
+        for point in shell:
+            points.extend(self._xy(*point))
+        self.create_polygon(
+            points,
+            smooth=True,
+            splinesteps=18,
+            fill='#dfe7ea',
+            outline='#7d9099',
+            width=2,
+        )
+        self._draw_shoulder(6, (105, 36, 275, 72), 'L2', button_state, rear=True)
+        self._draw_shoulder(4, (118, 82, 262, 116), 'L1', button_state)
+        self._draw_shoulder(7, (545, 36, 715, 72), 'R2', button_state, rear=True)
+        self._draw_shoulder(5, (558, 82, 702, 116), 'R1', button_state)
+
+    def _draw_front_view(self, axes, button_state, dpad_state):
+        offset = self.FRONT_Y
+        self.create_text(
+            *self._xy(48, 160), text='正面', anchor='w', fill='#526771', font=self._font(11, True)
+        )
+        silhouette = [
+            (80,95 + offset),(245,48 + offset),(330,75 + offset),(410,62 + offset),
+            (490,75 + offset),(575,48 + offset),(740,95 + offset),(770,210 + offset),
+            (710,340 + offset),(625,350 + offset),(535,285 + offset),(285,285 + offset),
+            (195,350 + offset),(110,340 + offset),(50,210 + offset),
+        ]
+        points = []
+        for point in silhouette:
+            points.extend(self._xy(*point))
+        self.create_polygon(
+            points,
+            smooth=True,
+            splinesteps=18,
+            fill='#dfe7ea',
+            outline='#7d9099',
+            width=2,
+        )
+
+        self._draw_center_control(8, (345, 141 + offset), 'select', button_state)
+        self._draw_center_control(12, (410, 141 + offset), 'home', button_state)
+        self._draw_center_control(9, (475, 141 + offset), 'menu', button_state)
+        self._draw_dpad(dpad_state)
+        self._draw_face(button_state)
+        self._draw_stick('left', (305, 235 + offset), axes)
+        self._draw_stick('right', (515, 235 + offset), axes)
+        self._draw_button(10, (270, 300 + offset, 340, 332 + offset), 'L3', button_state, 8)
+        self._draw_button(11, (480, 300 + offset, 550, 332 + offset), 'R3', button_state, 8)
+        self.create_text(*self._xy(146, 310 + offset), text='固定移動', fill='#526771', font=self._font(10, True))
+        self.create_text(*self._xy(674, 310 + offset), text='固定旋回 / 前後', fill='#526771', font=self._font(10, True))
+        self.create_text(*self._xy(305, 175 + offset), text='左スティック', fill='#526771', font=self._font(10, True))
+        self.create_text(*self._xy(515, 175 + offset), text='右スティック', fill='#526771', font=self._font(10, True))
+
     def redraw(self):
         width = max(1, self.winfo_width())
         height = max(1, self.winfo_height())
@@ -405,30 +469,8 @@ class GamepadCanvas(tk.Canvas):
         self._regions.clear()
         axes, _buttons, button_state, dpad_state = self._state.ui_snapshot()
 
-        silhouette = [(80,95),(245,48),(330,75),(410,62),(490,75),(575,48),(740,95),
-                      (770,210),(710,340),(625,350),(535,285),(285,285),(195,350),(110,340),(50,210)]
-        points = []
-        for point in silhouette:
-            points.extend(self._xy(*point))
-        self.create_polygon(points, smooth=True, splinesteps=18, fill='#dfe7ea', outline='#7d9099', width=2)
-
-        self._draw_shoulder(6, (75,38,245,76), 'L2', button_state, rear=True)
-        self._draw_shoulder(4, (88,80,232,112), 'L1', button_state)
-        self._draw_shoulder(7, (575,38,745,76), 'R2', button_state, rear=True)
-        self._draw_shoulder(5, (588,80,732,112), 'R1', button_state)
-        self._draw_center_control(8, (345,141), 'select', button_state)
-        self._draw_center_control(12, (410,141), 'home', button_state)
-        self._draw_center_control(9, (475,141), 'menu', button_state)
-        self._draw_dpad(dpad_state)
-        self._draw_face(button_state)
-        self._draw_stick('left', (305,235), axes)
-        self._draw_stick('right', (515,235), axes)
-        self._draw_button(10, (270,300,340,332), 'L3', button_state, 8)
-        self._draw_button(11, (480,300,550,332), 'R3', button_state, 8)
-        self.create_text(*self._xy(146,310), text='固定移動', fill='#526771', font=self._font(10, True))
-        self.create_text(*self._xy(674,310), text='固定旋回 / 前後', fill='#526771', font=self._font(10, True))
-        self.create_text(*self._xy(305,175), text='左スティック', fill='#526771', font=self._font(10, True))
-        self.create_text(*self._xy(515,175), text='右スティック', fill='#526771', font=self._font(10, True))
+        self._draw_top_view(button_state)
+        self._draw_front_view(axes, button_state, dpad_state)
 
     def _logical_point(self, event):
         return (event.x - self._offset_x) / self._scale, (event.y - self._offset_y) / self._scale
@@ -460,7 +502,7 @@ class GamepadCanvas(tk.Canvas):
             self._update_stick(event, self._active_stick)
 
     def _update_stick(self, event, side):
-        center = (305,235) if side == 'left' else (515,235)
+        center = (305, 235 + self.FRONT_Y) if side == 'left' else (515, 235 + self.FRONT_Y)
         x, y = self._logical_point(event)
         dx, dy = x-center[0], y-center[1]
         length = (dx*dx + dy*dy) ** 0.5
@@ -502,8 +544,8 @@ class VirtualJoyUI:
         self._status_names = {idx: name for idx, name in BUTTON_LAYOUT}
 
         root.title('virtual_joy')
-        root.geometry('860x590')
-        root.minsize(760, 550)
+        root.geometry('860x720')
+        root.minsize(760, 660)
         root.configure(bg=self.BACKGROUND)
 
         header = tk.Frame(root, bg=self.NAVY, height=54)
