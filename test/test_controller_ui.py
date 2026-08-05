@@ -70,6 +70,7 @@ class ControllerGeometryTest(unittest.TestCase):
         width, height = 1900, 879
         mode, transforms = controller_layout(width, height)
         self.assertEqual(mode, "wide")
+        self.assertAlmostEqual(transforms["top"][0], transforms["body"][0])
         self.assertGreater(transforms["body"][0], min(width / 650, height / 606))
 
         for bounds, transform in ((TOP_BOUNDS, transforms["top"]), (BODY_BOUNDS, transforms["body"])):

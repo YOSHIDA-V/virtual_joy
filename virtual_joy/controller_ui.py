@@ -48,19 +48,6 @@ BODY_BOUNDS = (50, 205, 580, 570)
 WIDE_ASPECT_RATIO = 1.65
 
 
-def _fit_bounds(bounds: Box, target: Tuple[float, float, float, float]) -> Transform:
-    source_left, source_top, source_right, source_bottom = bounds
-    target_left, target_top, target_right, target_bottom = target
-    source_width = source_right - source_left
-    source_height = source_bottom - source_top
-    target_width = max(1.0, target_right - target_left)
-    target_height = max(1.0, target_bottom - target_top)
-    scale = min(target_width / source_width, target_height / source_height)
-    offset_x = target_left + (target_width - source_width * scale) / 2 - source_left * scale
-    offset_y = target_top + (target_height - source_height * scale) / 2 - source_top * scale
-    return scale, offset_x, offset_y
-
-
 def controller_layout(width: int, height: int) -> Tuple[str, Dict[str, Transform]]:
     """Return distortion-free transforms for stacked and wide window layouts."""
     width = max(1, width)
@@ -77,12 +64,26 @@ def controller_layout(width: int, height: int) -> Tuple[str, Dict[str, Transform
 
     padding = max(12.0, min(width, height) * 0.02)
     gap = padding
-    split_x = width * 0.34
-    top_target = (padding, padding, split_x - gap / 2, height - padding)
-    body_target = (split_x + gap / 2, padding, width - padding, height - padding)
+    top_left, top_top, top_right, top_bottom = TOP_BOUNDS
+    body_left, body_top, body_right, body_bottom = BODY_BOUNDS
+    top_width = top_right - top_left
+    top_height = top_bottom - top_top
+    body_width = body_right - body_left
+    body_height = body_bottom - body_top
+    available_width = max(1.0, width - padding * 2 - gap)
+    available_height = max(1.0, height - padding * 2)
+    scale = min(
+        available_width / (top_width + body_width),
+        available_height / max(top_height, body_height),
+    )
+    top_offset_x = padding - top_left * scale
+    top_offset_y = padding + (available_height - top_height * scale) / 2 - top_top * scale
+    body_target_left = padding + top_width * scale + gap
+    body_offset_x = body_target_left - body_left * scale
+    body_offset_y = padding + (available_height - body_height * scale) / 2 - body_top * scale
     return "wide", {
-        "top": _fit_bounds(TOP_BOUNDS, top_target),
-        "body": _fit_bounds(BODY_BOUNDS, body_target),
+        "top": (scale, top_offset_x, top_offset_y),
+        "body": (scale, body_offset_x, body_offset_y),
     }
 
 
