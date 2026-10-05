@@ -1,0 +1,13 @@
+# 原因の確認
+
+Fast DDS runのstackは、実行中のGUI timer callbackからpublisher.publishへ進み、
+終了済みcontextへのpublishでRCLErrorが出たことを示しています。
+同runではJoy 80件・Twist 401件を受信していました。今回の不合格は終了処理の例外であり、通信不成立とは扱いません。
+
+タイミングを固定した再現テストでは、実際のROS contextをshutdownした後に両ノードのtimer callbackを呼び、
+同じpublish RCLErrorを再現しました。GUI/roverの2条件が失敗し、生きたcontextでの異常伝播2条件は通りました。
+
+修正はmainのspin例外処理に限定します。
+RCLErrorが出たときはnode自身のcontextを確認し、終了済みなら通常の終了処理へ進みます。
+contextが生きている間のRCLErrorは再送出します。publish処理・入力値・速度・DDS設定は変更しません。
+Jazzyのrclpyが使用するimplementation_singletonから例外型を取得します。

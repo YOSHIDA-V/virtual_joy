@@ -44,10 +44,12 @@ class ShutdownRaceTest(unittest.TestCase):
 
     def run_gui(self, spin):
         errors = []
+        roots = []
         original_tk = tk.Tk
 
         def create_root():
             root = original_tk()
+            roots.append(root)
             # Call the application's close callback. No mouse/keyboard event.
             root.after(500, lambda: root.tk.call(root.protocol('WM_DELETE_WINDOW')))
             return root
@@ -55,7 +57,14 @@ class ShutdownRaceTest(unittest.TestCase):
         with patch.object(gui.rclpy, 'spin', side_effect=spin), \
                 patch.object(gui.tk, 'Tk', side_effect=create_root), \
                 patch.object(threading, 'excepthook', side_effect=lambda args: errors.append(args.exc_value)):
-            gui.main(args=['--ros-args', '-r', '__ns:=/virtual_joy_jazzy_shutdown_check'])
+            try:
+                gui.main(args=['--ros-args', '-r', '__ns:=/virtual_joy_jazzy_shutdown_check'])
+            finally:
+                # A second Tk instance in the same test process must not run
+                # callbacks left in the first instance's Tcl interpreter.
+                for root in roots:
+                    for job in root.tk.call('after', 'info'):
+                        root.tk.call('after', 'cancel', job)
         return errors
 
     def test_gui_ignores_publish_failure_only_after_context_shutdown(self):

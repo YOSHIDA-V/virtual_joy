@@ -5,6 +5,7 @@ import tkinter as tk
 
 import rclpy
 from rclpy.executors import ExternalShutdownException
+from rclpy.impl.implementation_singleton import rclpy_implementation as _rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Joy
 
@@ -622,6 +623,9 @@ def main(args=None):
             rclpy.spin(node)
         except (KeyboardInterrupt, ExternalShutdownException):
             pass
+        except _rclpy.RCLError:
+            if node.context.ok():
+                raise
 
     spin_thread = threading.Thread(target=spin, daemon=True)
     spin_thread.start()

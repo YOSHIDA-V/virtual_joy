@@ -4,6 +4,7 @@ import threading
 
 import rclpy
 from rclpy.executors import ExternalShutdownException
+from rclpy.impl.implementation_singleton import rclpy_implementation as _rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Joy
@@ -160,6 +161,9 @@ def main(args=None):
         rclpy.spin(node)
     except (KeyboardInterrupt, ExternalShutdownException):
         pass
+    except _rclpy.RCLError:
+        if node.context.ok():
+            raise
     finally:
         node.destroy_node()
         rclpy.try_shutdown()
