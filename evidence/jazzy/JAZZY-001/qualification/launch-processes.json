@@ -1,0 +1,87 @@
+[
+  {
+    "pid": 6851,
+    "command": [
+      "/usr/bin/python3",
+      "/opt/ros/jazzy/bin/ros2",
+      "launch",
+      "/root/virtual_joy_jazzy_evidence/JAZZY-001-b61ca82/isolated_readme_launch.py"
+    ],
+    "cwd": "/root/ros2_ws/src/virtual_joy",
+    "environment": {
+      "ROS_DISTRO": "jazzy",
+      "ROS_DOMAIN_ID": "100",
+      "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
+      "RMW_IMPLEMENTATION": "rmw_cyclonedds_cpp",
+      "DISPLAY": ":99"
+    },
+    "script_hashes": {
+      "/root/virtual_joy_jazzy_evidence/JAZZY-001-b61ca82/isolated_readme_launch.py": "5a2df1cb71d43ce62cce4b9874b7e01a07ebf3fdc8358e833598535b7a16e6f0"
+    },
+    "parameter_files": []
+  },
+  {
+    "pid": 6854,
+    "command": [
+      "/usr/bin/python3",
+      "/root/ros2_ws/install/virtual_joy/lib/virtual_joy/virtual_joy_node",
+      "--ros-args",
+      "-r",
+      "__node:=virtual_joy",
+      "-r",
+      "__ns:=/virtual_joy_jazzy_check",
+      "--params-file",
+      "/tmp/launch_params_jpk3l_xv"
+    ],
+    "cwd": "/root/ros2_ws/src/virtual_joy",
+    "environment": {
+      "ROS_DISTRO": "jazzy",
+      "ROS_DOMAIN_ID": "100",
+      "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
+      "RMW_IMPLEMENTATION": "rmw_cyclonedds_cpp",
+      "DISPLAY": ":99"
+    },
+    "script_hashes": {
+      "/root/ros2_ws/install/virtual_joy/lib/virtual_joy/virtual_joy_node": "96a35581c7a2e9ea7a1fe47ddccaa8216577f2cf87adb5d9fa202d4a61543852"
+    },
+    "parameter_files": [
+      {
+        "runtime_path": "/tmp/launch_params_jpk3l_xv",
+        "sha256": "47830dfc97061b7fa0421ae2d032a532d1470f934077e4d223d190dfb9eb260b",
+        "stored_file": "pid-6854-parameters.yaml"
+      }
+    ]
+  },
+  {
+    "pid": 6855,
+    "command": [
+      "/usr/bin/python3",
+      "/root/ros2_ws/install/virtual_joy/lib/virtual_joy/rover_gamepad_node",
+      "--ros-args",
+      "-r",
+      "__node:=rover_gamepad",
+      "-r",
+      "__ns:=/virtual_joy_jazzy_check",
+      "--params-file",
+      "/tmp/launch_params_d06gw5vl"
+    ],
+    "cwd": "/root/ros2_ws/src/virtual_joy",
+    "environment": {
+      "ROS_DISTRO": "jazzy",
+      "ROS_DOMAIN_ID": "100",
+      "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
+      "RMW_IMPLEMENTATION": "rmw_cyclonedds_cpp",
+      "DISPLAY": ":99"
+    },
+    "script_hashes": {
+      "/root/ros2_ws/install/virtual_joy/lib/virtual_joy/rover_gamepad_node": "6c57e933d9b95e729ff01b2cf6fc4a6600674e9fa5d42fc63f8cf04de1f07197"
+    },
+    "parameter_files": [
+      {
+        "runtime_path": "/tmp/launch_params_d06gw5vl",
+        "sha256": "3885cbeb776f4fa78707172bb56da61878461fbb024bbf045c98fed80f77fccd",
+        "stored_file": "pid-6855-parameters.yaml"
+      }
+    ]
+  }
+]

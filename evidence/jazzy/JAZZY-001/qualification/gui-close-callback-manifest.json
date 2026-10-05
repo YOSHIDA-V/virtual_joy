@@ -1,0 +1,14 @@
+{
+  "start_utc": "2026-10-05T12:13:07Z",
+  "pid": 6950,
+  "command": [
+    "/usr/bin/python3",
+    "/root/virtual_joy_jazzy_evidence/JAZZY-001-b61ca82/gui_close_callback_probe.py"
+  ],
+  "cwd": "/root/ros2_ws/src/virtual_joy",
+  "commit": "b61ca82a13b8478c18d1fa6eabf9406f09872fa1",
+  "script_sha256": "c3b86855dc26899ed5f591d361bf3374d1bc9ae3e4c911157584452735081a1e",
+  "input_method": "Tk application close callback, no mouse/keyboard event",
+  "exit_code": 0,
+  "result": "PASS"
+}
