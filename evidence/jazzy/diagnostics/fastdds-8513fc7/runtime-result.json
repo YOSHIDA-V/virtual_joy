@@ -1,0 +1,7 @@
+{
+  "software_compatibility": "NOT_COMPLETED",
+  "windows_desktop_and_manual_mouse_operation": "UNVERIFIED",
+  "physical_rover": "UNVERIFIED",
+  "failure": "Traceback (most recent call last):\n  File \"/root/ros2_ws/src/virtual_joy/tools/verify_jazzy_runtime.py\", line 332, in main\n    result[\"readme_launch\"] = run_launch(run_dir, observer, executor)\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/ros2_ws/src/virtual_joy/tools/verify_jazzy_runtime.py\", line 196, in run_launch\n    check(not errors and not alive and shutdown[\"clean_node_exits\"] == 2, \"SIGINT shutdown was not clean\")\n  File \"/root/ros2_ws/src/virtual_joy/tools/verify_jazzy_runtime.py\", line 113, in check\n    raise AssertionError(message)\nAssertionError: SIGINT shutdown was not clean\n",
+  "finish_utc": "2026-10-05T12:22:00Z"
+}

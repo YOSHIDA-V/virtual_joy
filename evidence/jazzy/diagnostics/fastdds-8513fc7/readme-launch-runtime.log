@@ -1,0 +1,40 @@
+[INFO] [launch]: All log files can be found below /root/.ros/log/2026-10-05-21-21-50-851266-MSI-7382
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [virtual_joy_node-1]: process started with pid [7385]
+[INFO] [rover_gamepad_node-2]: process started with pid [7386]
+[rover_gamepad_node-2] [0m[INFO] [1791202911.563584547] [virtual_joy_jazzy_check.rover_gamepad]: rover_gamepad started joy_topic=joy twist_topic=rover_twist rate=100.0Hz[0m
+[virtual_joy_node-1] [0m[INFO] [1791202911.634346705] [virtual_joy_jazzy_check.virtual_joy]: virtual_joy started topic=joy rate=20.0Hz[0m
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [rover_gamepad_node-2]: sending signal 'SIGINT' to process[rover_gamepad_node-2]
+[INFO] [virtual_joy_node-1]: sending signal 'SIGINT' to process[virtual_joy_node-1]
+[virtual_joy_node-1] Exception in thread Thread-1 (spin):
+[virtual_joy_node-1] Traceback (most recent call last):
+[virtual_joy_node-1]   File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+[virtual_joy_node-1]     self.run()
+[virtual_joy_node-1]   File "/usr/lib/python3.12/threading.py", line 1010, in run
+[virtual_joy_node-1]     self._target(*self._args, **self._kwargs)
+[virtual_joy_node-1]   File "/root/ros2_ws/build/virtual_joy/virtual_joy/virtual_joy_node.py", line 622, in spin
+[virtual_joy_node-1]     rclpy.spin(node)
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+[virtual_joy_node-1]     executor.spin_once()
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+[virtual_joy_node-1]     self._spin_once_impl(timeout_sec)
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 918, in _spin_once_impl
+[virtual_joy_node-1]     raise handler.exception()
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/task.py", line 286, in _execute_coroutine_step
+[virtual_joy_node-1]     result = coro.send(None)
+[virtual_joy_node-1]              ^^^^^^^^^^^^^^^
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 592, in handler
+[virtual_joy_node-1]     await call_coroutine()
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 454, in _execute
+[virtual_joy_node-1]     await await_or_execute(tmr.callback)
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 115, in await_or_execute
+[virtual_joy_node-1]     return callback(*args)
+[virtual_joy_node-1]            ^^^^^^^^^^^^^^^
+[virtual_joy_node-1]   File "/root/ros2_ws/build/virtual_joy/virtual_joy/virtual_joy_node.py", line 164, in _on_timer
+[virtual_joy_node-1]     self._publisher.publish(msg)
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/publisher.py", line 70, in publish
+[virtual_joy_node-1]     self.__publisher.publish(msg)
+[virtual_joy_node-1] rclpy._rclpy_pybind11.RCLError: Failed to publish: publisher's context is invalid, at ./src/rcl/publisher.c:423
+[INFO] [rover_gamepad_node-2]: process has finished cleanly [pid 7386]
+[INFO] [virtual_joy_node-1]: process has finished cleanly [pid 7385]
