@@ -1,0 +1,71 @@
+[INFO] [launch]: All log files can be found below /root/.ros/log/2026-10-05-21-07-03-965605-MSI-6554
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [virtual_joy_node-1]: process started with pid [6557]
+[INFO] [rover_gamepad_node-2]: process started with pid [6558]
+[virtual_joy_node-1] [0m[INFO] [1791202024.379308182] [virtual_joy_jazzy_check.virtual_joy]: virtual_joy started topic=joy rate=20.0Hz[0m
+[rover_gamepad_node-2] [0m[INFO] [1791202024.424716148] [virtual_joy_jazzy_check.rover_gamepad]: rover_gamepad started joy_topic=joy twist_topic=rover_twist rate=100.0Hz[0m
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [rover_gamepad_node-2]: sending signal 'SIGINT' to process[rover_gamepad_node-2]
+[INFO] [virtual_joy_node-1]: sending signal 'SIGINT' to process[virtual_joy_node-1]
+[virtual_joy_node-1] Exception in thread Thread-1 (spin):
+[virtual_joy_node-1] Traceback (most recent call last):
+[virtual_joy_node-1]   File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+[virtual_joy_node-1]     self.run()
+[virtual_joy_node-1]   File "/usr/lib/python3.12/threading.py", line 1010, in run
+[virtual_joy_node-1]     self._target(*self._args, **self._kwargs)
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+[virtual_joy_node-1]     executor.spin_once()
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+[virtual_joy_node-1]     self._spin_once_impl(timeout_sec)
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+[virtual_joy_node-1]     handler, entity, node = self.wait_for_ready_callbacks(
+[virtual_joy_node-1]                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+[virtual_joy_node-1]     return next(self._cb_iter)
+[virtual_joy_node-1]            ^^^^^^^^^^^^^^^^^^^
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+[virtual_joy_node-1]     raise ExternalShutdownException()
+[virtual_joy_node-1] rclpy.executors.ExternalShutdownException
+[virtual_joy_node-1] Traceback (most recent call last):
+[virtual_joy_node-1]   File "/root/ros2_ws/install/virtual_joy/lib/virtual_joy/virtual_joy_node", line 33, in <module>
+[virtual_joy_node-1]     sys.exit(load_entry_point('virtual-joy', 'console_scripts', 'virtual_joy_node')())
+[virtual_joy_node-1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[virtual_joy_node-1]   File "/root/ros2_ws/build/virtual_joy/virtual_joy/virtual_joy_node.py", line 636, in main
+[virtual_joy_node-1]     root.mainloop()
+[virtual_joy_node-1]   File "/usr/lib/python3.12/tkinter/__init__.py", line 1504, in mainloop
+[virtual_joy_node-1]     self.tk.mainloop(n)
+[virtual_joy_node-1] KeyboardInterrupt
+[ERROR] [virtual_joy_node-1]: process has died [pid 6557, exit code -2, cmd '/root/ros2_ws/install/virtual_joy/lib/virtual_joy/virtual_joy_node --ros-args -r __node:=virtual_joy -r __ns:=/virtual_joy_jazzy_check --params-file /tmp/launch_params_3mjwl3m_'].
+[rover_gamepad_node-2] Traceback (most recent call last):
+[rover_gamepad_node-2]   File "/root/ros2_ws/build/virtual_joy/virtual_joy/rover_gamepad_node.py", line 158, in main
+[rover_gamepad_node-2]     rclpy.spin(node)
+[rover_gamepad_node-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+[rover_gamepad_node-2]     executor.spin_once()
+[rover_gamepad_node-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+[rover_gamepad_node-2]     self._spin_once_impl(timeout_sec)
+[rover_gamepad_node-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+[rover_gamepad_node-2]     handler, entity, node = self.wait_for_ready_callbacks(
+[rover_gamepad_node-2]                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rover_gamepad_node-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+[rover_gamepad_node-2]     return next(self._cb_iter)
+[rover_gamepad_node-2]            ^^^^^^^^^^^^^^^^^^^
+[rover_gamepad_node-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 781, in _wait_for_ready_callbacks
+[rover_gamepad_node-2]     wait_set.wait(timeout_nsec)
+[rover_gamepad_node-2] KeyboardInterrupt
+[rover_gamepad_node-2] 
+[rover_gamepad_node-2] During handling of the above exception, another exception occurred:
+[rover_gamepad_node-2] 
+[rover_gamepad_node-2] Traceback (most recent call last):
+[rover_gamepad_node-2]   File "/root/ros2_ws/install/virtual_joy/lib/virtual_joy/rover_gamepad_node", line 33, in <module>
+[rover_gamepad_node-2]     sys.exit(load_entry_point('virtual-joy', 'console_scripts', 'rover_gamepad_node')())
+[rover_gamepad_node-2]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rover_gamepad_node-2]   File "/root/ros2_ws/build/virtual_joy/virtual_joy/rover_gamepad_node.py", line 161, in main
+[rover_gamepad_node-2]     rclpy.shutdown()
+[rover_gamepad_node-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 134, in shutdown
+[rover_gamepad_node-2]     _shutdown(context=context)
+[rover_gamepad_node-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/utilities.py", line 82, in shutdown
+[rover_gamepad_node-2]     context.shutdown()
+[rover_gamepad_node-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/context.py", line 129, in shutdown
+[rover_gamepad_node-2]     self.__context.shutdown()
+[rover_gamepad_node-2] rclpy._rclpy_pybind11.RCLError: failed to shutdown: rcl_shutdown already called on the given context, at ./src/rcl/init.c:333
+[ERROR] [rover_gamepad_node-2]: process has died [pid 6558, exit code 1, cmd '/root/ros2_ws/install/virtual_joy/lib/virtual_joy/rover_gamepad_node --ros-args -r __node:=rover_gamepad -r __ns:=/virtual_joy_jazzy_check --params-file /tmp/launch_params_js9ramgf'].

@@ -1,0 +1,7 @@
+{
+  "software_compatibility": "NOT_COMPLETED",
+  "windows_desktop_and_manual_mouse_operation": "UNVERIFIED",
+  "physical_rover": "UNVERIFIED",
+  "failure": "Traceback (most recent call last):\n  File \"/root/ros2_ws/src/virtual_joy/tools/verify_jazzy_runtime.py\", line 333, in main\n    result[\"state_runtime\"] = run_state_cases(run_dir, observer, executor)\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/ros2_ws/src/virtual_joy/tools/verify_jazzy_runtime.py\", line 266, in run_state_cases\n    check(all(near(item[\"value\"], [0, 0, 0]) for item in after), \"lateral velocity remained after Joy timeout\")\n  File \"/root/ros2_ws/src/virtual_joy/tools/verify_jazzy_runtime.py\", line 113, in check\n    raise AssertionError(message)\nAssertionError: lateral velocity remained after Joy timeout\n",
+  "finish_utc": "2026-10-05T12:07:22Z"
+}

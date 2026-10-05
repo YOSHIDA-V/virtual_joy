@@ -1,0 +1,11 @@
+{
+  "launch_returncode": 0,
+  "errors": [
+    "Traceback (most recent call last)",
+    "ExternalShutdownException",
+    "RCLError",
+    "KeyboardInterrupt"
+  ],
+  "clean_node_exits": 0,
+  "owned_child_pids_remaining": []
+}

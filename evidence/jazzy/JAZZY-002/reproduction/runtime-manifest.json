@@ -1,0 +1,77 @@
+{
+  "run_id": "JAZZY-002",
+  "start_utc": "2026-10-05T12:07:11Z",
+  "commit": "9b83e83ec2cb46527956c4d9da125545fdfb890e",
+  "criteria": {
+    "source": "unchanged clean checkout at the specified commit",
+    "launch": "installed README rover launch stays alive and publishes neutral Joy/Twist",
+    "joy": "8 axes, 13 buttons, unique timestamps, at least 10 received messages/s",
+    "twist": "at least 50 received messages/s",
+    "conversion": "hold/release, dpad, toggle/reset and enabled/disabled stick state reach ROS subscriptions",
+    "forward_timeout": "linear.x and angular.z become zero after Joy stops for more than 1 second",
+    "gui": "whole Xvfb display screenshots; visual inspection is required separately",
+    "diagnostic": "lateral timeout is measured separately; no hardware-readiness conclusion",
+    "clean_shutdown": "diagnostic only",
+    "lateral_timeout": "all published x/y/z commands zero after Joy stops for more than one second"
+  },
+  "helper_sha256": "955dfc419aa0c38f7f9120fbbc4621b35a9ef2ed9a0bec0aee37c4478bd40d44",
+  "files_sha256": {
+    "/root/ros2_ws/src/virtual_joy/virtual_joy/virtual_joy_node.py": "559acfcc8c5df5e1c5704024dc28ab0853c60571e84a8d9fa678473411e38970",
+    "/root/ros2_ws/src/virtual_joy/virtual_joy/rover_gamepad_node.py": "100b9bba627eaf1d91a2125750556066e1a6160cd0e17ed2a7701ce53cd09882",
+    "/root/ros2_ws/src/virtual_joy/virtual_joy/controller_ui.py": "649541c4bc753122695b70e9ab559bbeb9f6774b00a5fa87917d6bec31ff70d2",
+    "/root/ros2_ws/install/virtual_joy/share/virtual_joy/package.xml": "b6ee1e1566bfd01bce22ca8e0a8b547188dd408988a5742751a88c3e7b5c1895",
+    "/root/ros2_ws/install/virtual_joy/share/virtual_joy/launch/virtual_joy_rover.launch.py": "749f336b68babf0609d8984ac1be3cf35d504c4a7663cc858faeb451277b9c6d",
+    "/root/ros2_ws/install/virtual_joy/share/virtual_joy/launch/virtual_joy.launch.py": "6e061b00a30cb3ecda7f4aa0feabf6c4ae332c63123ec56a9ba522e3d28e82f7",
+    "/root/ros2_ws/src/virtual_joy/package.xml": "b6ee1e1566bfd01bce22ca8e0a8b547188dd408988a5742751a88c3e7b5c1895",
+    "/root/ros2_ws/src/virtual_joy/setup.py": "d952c82930897b16118930b745bf56a421e70e324bd2134ef6c4bf3a2d03c0e8",
+    "/root/ros2_ws/src/virtual_joy/launch/virtual_joy_rover.launch.py": "749f336b68babf0609d8984ac1be3cf35d504c4a7663cc858faeb451277b9c6d",
+    "/root/ros2_ws/src/virtual_joy/launch/virtual_joy.launch.py": "6e061b00a30cb3ecda7f4aa0feabf6c4ae332c63123ec56a9ba522e3d28e82f7"
+  },
+  "environment": {
+    "PRETTY_NAME": "\"Ubuntu 24.04.5 LTS\"",
+    "NAME": "\"Ubuntu\"",
+    "VERSION_ID": "\"24.04\"",
+    "VERSION": "\"24.04.5 LTS (Noble Numbat)\"",
+    "VERSION_CODENAME": "noble",
+    "ID": "ubuntu",
+    "ID_LIKE": "debian",
+    "HOME_URL": "\"https://www.ubuntu.com/\"",
+    "SUPPORT_URL": "\"https://help.ubuntu.com/\"",
+    "BUG_REPORT_URL": "\"https://bugs.launchpad.net/ubuntu/\"",
+    "PRIVACY_POLICY_URL": "\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"",
+    "UBUNTU_CODENAME": "noble",
+    "LOGO": "ubuntu-logo"
+  },
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "process": {
+    "pid": 6601,
+    "command": [
+      "python3",
+      "tools/verify_jazzy_runtime.py",
+      "--expected-commit",
+      "9b83e83ec2cb46527956c4d9da125545fdfb890e",
+      "--run-dir",
+      "/root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/JAZZY-002",
+      "--state-only",
+      "--require-lateral-stop"
+    ],
+    "cwd": "/root/ros2_ws/src/virtual_joy",
+    "environment": {
+      "ROS_DISTRO": "jazzy",
+      "ROS_DOMAIN_ID": "100",
+      "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
+      "RMW_IMPLEMENTATION": "rmw_cyclonedds_cpp",
+      "DISPLAY": ":99"
+    },
+    "script_hashes": {
+      "tools/verify_jazzy_runtime.py": "955dfc419aa0c38f7f9120fbbc4621b35a9ef2ed9a0bec0aee37c4478bd40d44"
+    }
+  },
+  "namespace": "/virtual_joy_jazzy_check",
+  "topic_isolation": "relative Joy/Twist topics under test namespace; ROS discovery restricted to localhost",
+  "user_mouse_keyboard_events": "none",
+  "source_status_before": "",
+  "actual_rclpy_domain_id": 100,
+  "actual_rmw": "rmw_cyclonedds_cpp",
+  "package_prefix": "/root/ros2_ws/install/virtual_joy"
+}

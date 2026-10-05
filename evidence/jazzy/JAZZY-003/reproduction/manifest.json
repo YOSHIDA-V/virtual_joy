@@ -1,0 +1,21 @@
+{
+  "run_id": "baseline-20261005T120702Z",
+  "start_utc": "2026-10-05T12:08:37Z",
+  "target": "Ubuntu 24.04 / ROS 2 Jazzy",
+  "commit": "9b83e83ec2cb46527956c4d9da125545fdfb890e",
+  "source_status": "",
+  "cwd": "/root/ros2_ws/src/virtual_joy",
+  "command": [
+    "rosdep",
+    "check",
+    "--from-paths",
+    ".",
+    "--ignore-src",
+    "--rosdistro",
+    "jazzy"
+  ],
+  "pid": 6685,
+  "package_xml_sha256": "b6ee1e1566bfd01bce22ca8e0a8b547188dd408988a5742751a88c3e7b5c1895",
+  "ros_distro": "jazzy",
+  "exit_code": 2
+}

@@ -1,0 +1,35 @@
+going to create a new package
+package name: jazzy_python_template
+destination directory: /root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/package-template
+package format: 3
+version: 0.0.0
+description: TODO: Package description
+maintainer: ['virtual_joy <noreply@example.invalid>']
+licenses: ['TODO: License declaration']
+build type: ament_python
+dependencies: []
+creating folder /root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/package-template/jazzy_python_template
+creating /root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/package-template/jazzy_python_template/package.xml
+creating source folder
+creating folder /root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/package-template/jazzy_python_template/jazzy_python_template
+creating /root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/package-template/jazzy_python_template/setup.py
+creating /root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/package-template/jazzy_python_template/setup.cfg
+creating folder /root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/package-template/jazzy_python_template/resource
+creating /root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/package-template/jazzy_python_template/resource/jazzy_python_template
+creating /root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/package-template/jazzy_python_template/jazzy_python_template/__init__.py
+creating folder /root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/package-template/jazzy_python_template/test
+creating /root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/package-template/jazzy_python_template/test/test_copyright.py
+creating /root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/package-template/jazzy_python_template/test/test_flake8.py
+creating /root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/package-template/jazzy_python_template/test/test_pep257.py
+
+[WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
+It is recommended to use one of the ament license identifiers:
+Apache-2.0
+BSL-1.0
+BSD-2.0
+BSD-2-Clause
+BSD-3-Clause
+GPL-3.0-only
+LGPL-3.0-only
+MIT
+MIT-0
