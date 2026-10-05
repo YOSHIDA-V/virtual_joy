@@ -1,0 +1,61 @@
+test_gui_ignores_publish_failure_only_after_context_shutdown (test_shutdown.ShutdownRaceTest.test_gui_ignores_publish_failure_only_after_context_shutdown) ... [INFO] [1791203373.271408944] [virtual_joy_jazzy_shutdown_check.virtual_joy]: virtual_joy started topic=joy rate=20.0Hz
+FAIL
+test_gui_preserves_live_context_publish_failure (test_shutdown.ShutdownRaceTest.test_gui_preserves_live_context_publish_failure) ... [INFO] [1791203373.500147166] [virtual_joy_jazzy_shutdown_check.virtual_joy]: virtual_joy started topic=joy rate=20.0Hz
+invalid command name "132072126855552_refresh_ui"
+    while executing
+"132072126855552_refresh_ui"
+    ("after" script)
+invalid command name "132072342962240<lambda>"
+    while executing
+"132072342962240<lambda>"
+    ("after" script)
+ok
+test_rover_ignores_publish_failure_only_after_context_shutdown (test_shutdown.ShutdownRaceTest.test_rover_ignores_publish_failure_only_after_context_shutdown) ... [INFO] [1791203374.063929230] [virtual_joy_jazzy_shutdown_check.rover_gamepad]: rover_gamepad started joy_topic=joy twist_topic=rover_twist rate=100.0Hz
+ERROR
+test_rover_preserves_live_context_publish_failure (test_shutdown.ShutdownRaceTest.test_rover_preserves_live_context_publish_failure) ... [INFO] [1791203374.110463622] [virtual_joy_jazzy_shutdown_check.rover_gamepad]: rover_gamepad started joy_topic=joy twist_topic=rover_twist rate=100.0Hz
+ok
+
+======================================================================
+ERROR: test_rover_ignores_publish_failure_only_after_context_shutdown (test_shutdown.ShutdownRaceTest.test_rover_ignores_publish_failure_only_after_context_shutdown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/root/ros2_ws/src/virtual_joy/test/test_shutdown.py", line 38, in test_rover_ignores_publish_failure_only_after_context_shutdown
+    rover.main(args=['--ros-args', '-r', '__ns:=/virtual_joy_jazzy_shutdown_check'])
+  File "/root/ros2_ws/src/virtual_joy/virtual_joy/rover_gamepad_node.py", line 160, in main
+    rclpy.spin(node)
+  File "/usr/lib/python3.12/unittest/mock.py", line 1134, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1138, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1199, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/ros2_ws/src/virtual_joy/test/test_shutdown.py", line 23, in publish_after_context_shutdown
+    node._timer_callback()
+  File "/root/ros2_ws/src/virtual_joy/virtual_joy/rover_gamepad_node.py", line 153, in _timer_callback
+    self._twist_pub.publish(self._current_cmd)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/publisher.py", line 70, in publish
+    self.__publisher.publish(msg)
+rclpy._rclpy_pybind11.RCLError: Failed to publish: publisher's context is invalid, at ./src/rcl/publisher.c:423
+
+======================================================================
+FAIL: test_gui_ignores_publish_failure_only_after_context_shutdown (test_shutdown.ShutdownRaceTest.test_gui_ignores_publish_failure_only_after_context_shutdown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/root/ros2_ws/src/virtual_joy/test/test_shutdown.py", line 62, in test_gui_ignores_publish_failure_only_after_context_shutdown
+    self.assertEqual(self.run_gui(publish_after_context_shutdown), [])
+AssertionError: Lists differ: [RCLError("Failed to publish: publisher's [46 chars]23")] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+RCLError("Failed to publish: publisher's context is invalid, at ./src/rcl/publisher.c:423")
+
+- [RCLError("Failed to publish: publisher's context is invalid, at ./src/rcl/publisher.c:423")]
++ []
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.981s
+
+FAILED (failures=1, errors=1)

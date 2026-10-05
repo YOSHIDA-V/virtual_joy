@@ -1,0 +1,28 @@
+{
+  "run_id": "JAZZY-004-c08cb87-reproduction",
+  "commit": "c08cb87dd4631b1cbc1f6db40c4aa096ca1f6718",
+  "pid": 7524,
+  "command": [
+    "xvfb-run",
+    "-a",
+    "/usr/bin/python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "test",
+    "-p",
+    "test_shutdown.py",
+    "-v"
+  ],
+  "cwd": "/root/ros2_ws/src/virtual_joy",
+  "test_sha256": "ce9b17ee2c071e24454f9981bce0500a446365e40a30e12b01806bd987f4186c",
+  "start_utc": "2026-10-05T12:29:32Z",
+  "environment": {
+    "ROS_DISTRO": "jazzy",
+    "ROS_DOMAIN_ID": "100",
+    "RMW_IMPLEMENTATION": "rmw_cyclonedds_cpp",
+    "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST"
+  },
+  "exit_code": 1
+}
