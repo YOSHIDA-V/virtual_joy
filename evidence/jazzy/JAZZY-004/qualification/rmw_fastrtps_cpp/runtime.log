@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/root/ros2_ws/src/virtual_joy/tools/verify_jazzy_runtime.py", line 353, in <module>
+    main()
+  File "/root/ros2_ws/src/virtual_joy/tools/verify_jazzy_runtime.py", line 332, in main
+    result["readme_launch"] = run_launch(run_dir, observer, executor)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/ros2_ws/src/virtual_joy/tools/verify_jazzy_runtime.py", line 153, in run_launch
+    check(observer.joy and observer.twist, "README launch topic discovery timed out")
+  File "/root/ros2_ws/src/virtual_joy/tools/verify_jazzy_runtime.py", line 113, in check
+    raise AssertionError(message)
+AssertionError: README launch topic discovery timed out

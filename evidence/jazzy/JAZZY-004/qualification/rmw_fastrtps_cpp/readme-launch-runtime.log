@@ -1,0 +1,11 @@
+[INFO] [launch]: All log files can be found below /root/.ros/log/2026-10-05-21-33-20-624712-MSI-7833
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [virtual_joy_node-1]: process started with pid [7836]
+[INFO] [rover_gamepad_node-2]: process started with pid [7837]
+[rover_gamepad_node-2] [0m[INFO] [1791203601.249105909] [virtual_joy_jazzy_check.rover_gamepad]: rover_gamepad started joy_topic=joy twist_topic=rover_twist rate=100.0Hz[0m
+[virtual_joy_node-1] [0m[INFO] [1791203601.316166641] [virtual_joy_jazzy_check.virtual_joy]: virtual_joy started topic=joy rate=20.0Hz[0m
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [rover_gamepad_node-2]: sending signal 'SIGINT' to process[rover_gamepad_node-2]
+[INFO] [virtual_joy_node-1]: sending signal 'SIGINT' to process[virtual_joy_node-1]
+[INFO] [rover_gamepad_node-2]: process has finished cleanly [pid 7837]
+[INFO] [virtual_joy_node-1]: process has finished cleanly [pid 7836]

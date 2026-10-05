@@ -1,0 +1,23 @@
+{
+  "run_id": "JAZZY-004-a3508eb",
+  "commit": "a3508eb9c35630ad9e2d32ef2f7f6b0d49aa174d",
+  "pid": 7671,
+  "command": [
+    "xvfb-run",
+    "-a",
+    "/usr/bin/python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "test",
+    "-v"
+  ],
+  "cwd": "/root/ros2_ws/src/virtual_joy",
+  "start_utc": "2026-10-05T12:32:58Z",
+  "files_sha256": {
+    "test/test_controller_ui.py": "8e2bad3fe224d8fd35275233afdd78a9884c0c7162670b374d21785c293b4309",
+    "test/test_shutdown.py": "edf8cef2ed31e34f6c3b3c2f17e089113d441c45563527571dfc682aa0ded92b"
+  },
+  "exit_code": 0
+}

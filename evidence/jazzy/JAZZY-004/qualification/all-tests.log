@@ -1,0 +1,18 @@
+test_all_visible_buttons_have_one_geometry (test_controller_ui.ControllerGeometryTest.test_all_visible_buttons_have_one_geometry) ... ok
+test_control_keys_are_unique (test_controller_ui.ControllerGeometryTest.test_control_keys_are_unique) ... ok
+test_shapes_are_nonempty_and_inside_canvas (test_controller_ui.ControllerGeometryTest.test_shapes_are_nonempty_and_inside_canvas) ... ok
+test_stacked_layout_preserves_reference_scale (test_controller_ui.ControllerGeometryTest.test_stacked_layout_preserves_reference_scale) ... ok
+test_wide_layout_uses_width_without_distortion (test_controller_ui.ControllerGeometryTest.test_wide_layout_uses_width_without_distortion) ... ok
+test_gui_ignores_publish_failure_only_after_context_shutdown (test_shutdown.ShutdownRaceTest.test_gui_ignores_publish_failure_only_after_context_shutdown) ... [INFO] [1791203578.985515519] [virtual_joy_jazzy_shutdown_check.virtual_joy]: virtual_joy started topic=joy rate=20.0Hz
+ok
+test_gui_preserves_live_context_publish_failure (test_shutdown.ShutdownRaceTest.test_gui_preserves_live_context_publish_failure) ... [INFO] [1791203579.159479370] [virtual_joy_jazzy_shutdown_check.virtual_joy]: virtual_joy started topic=joy rate=20.0Hz
+ok
+test_rover_ignores_publish_failure_only_after_context_shutdown (test_shutdown.ShutdownRaceTest.test_rover_ignores_publish_failure_only_after_context_shutdown) ... [INFO] [1791203579.719869429] [virtual_joy_jazzy_shutdown_check.rover_gamepad]: rover_gamepad started joy_topic=joy twist_topic=rover_twist rate=100.0Hz
+ok
+test_rover_preserves_live_context_publish_failure (test_shutdown.ShutdownRaceTest.test_rover_preserves_live_context_publish_failure) ... [INFO] [1791203579.770724664] [virtual_joy_jazzy_shutdown_check.rover_gamepad]: rover_gamepad started joy_topic=joy twist_topic=rover_twist rate=100.0Hz
+ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.877s
+
+OK

@@ -1,0 +1,9 @@
+{
+  "reviewer": "Codex",
+  "reviewed_utc": "2026-10-05T12:40:55.640319+00:00",
+  "image": "JAZZY-004/qualification/rmw_cyclonedds_cpp/readme-launch-display.png",
+  "sha256": "0f4beefad9e2b881ebd3bc41c846d4c3580396354b340a97a53baa5291b78e82",
+  "result": "PASS: whole virtual display inspected; controller, Japanese labels and neutral status present",
+  "scope": "private Xvfb display; user desktop and manual mouse operation UNVERIFIED",
+  "image_transport_note": "original PNG bytes inspected; view_image transport initially rendered black despite matching original bytes"
+}

@@ -1,0 +1,4 @@
+/virtual_joy_jazzy_check/virtual_joy:
+  ros__parameters:
+    publish_rate_hz: 20.0
+    topic_name: joy

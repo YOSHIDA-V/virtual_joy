@@ -1,0 +1,6 @@
+/virtual_joy_jazzy_check/rover_gamepad:
+  ros__parameters:
+    joy_timeout_sec: 1.0
+    joy_topic: joy
+    publish_rate: 100.0
+    twist_topic: rover_twist
