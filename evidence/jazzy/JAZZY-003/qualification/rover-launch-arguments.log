@@ -1,0 +1,13 @@
+Arguments (pass arguments as '<name>:=<value>'):
+
+    'topic_name':
+        Joy topic name
+        (default: 'joy')
+
+    'joy_publish_rate_hz':
+        virtual_joy publish rate [Hz]
+        (default: '20.0')
+
+    'cmd_publish_rate':
+        rover_gamepad publish rate [Hz]
+        (default: '100.0')

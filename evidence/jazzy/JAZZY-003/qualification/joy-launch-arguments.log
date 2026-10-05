@@ -1,0 +1,9 @@
+Arguments (pass arguments as '<name>:=<value>'):
+
+    'topic_name':
+        Joy topic name
+        (default: 'joy')
+
+    'publish_rate_hz':
+        Publish rate [Hz]
+        (default: '20.0')

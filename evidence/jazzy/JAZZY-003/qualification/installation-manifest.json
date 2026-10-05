@@ -1,0 +1,55 @@
+[
+  {
+    "step": "rosdep-check",
+    "pid": 7163,
+    "command": [
+      "rosdep",
+      "check",
+      "--from-paths",
+      ".",
+      "--ignore-src",
+      "--rosdistro",
+      "jazzy"
+    ],
+    "cwd": "/root/ros2_ws/src/virtual_joy",
+    "start_utc": "2026-10-05T12:19:17Z",
+    "commit": "8513fc77e1c1cce57ae087ca2cbb788bf35d55af",
+    "package_xml_sha256": "d689e8f229cdecb92592d003f32a499d5fc5785eb3650b4246f39a34a267174d",
+    "exit_code": 0
+  },
+  {
+    "step": "rosdep-install",
+    "pid": 7183,
+    "command": [
+      "rosdep",
+      "install",
+      "--from-paths",
+      ".",
+      "--ignore-src",
+      "--rosdistro",
+      "jazzy",
+      "-y"
+    ],
+    "cwd": "/root/ros2_ws/src/virtual_joy",
+    "start_utc": "2026-10-05T12:19:18Z",
+    "commit": "8513fc77e1c1cce57ae087ca2cbb788bf35d55af",
+    "package_xml_sha256": "d689e8f229cdecb92592d003f32a499d5fc5785eb3650b4246f39a34a267174d",
+    "exit_code": 0
+  },
+  {
+    "step": "build",
+    "pid": 7203,
+    "command": [
+      "colcon",
+      "build",
+      "--symlink-install",
+      "--packages-select",
+      "virtual_joy"
+    ],
+    "cwd": "/root/ros2_ws",
+    "start_utc": "2026-10-05T12:19:18Z",
+    "commit": "8513fc77e1c1cce57ae087ca2cbb788bf35d55af",
+    "package_xml_sha256": "d689e8f229cdecb92592d003f32a499d5fc5785eb3650b4246f39a34a267174d",
+    "exit_code": 0
+  }
+]
