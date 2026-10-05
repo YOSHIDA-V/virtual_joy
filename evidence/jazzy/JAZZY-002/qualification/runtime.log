@@ -1,0 +1,821 @@
+[INFO] [1791202537.181500086] [virtual_joy_jazzy_check.virtual_joy]: virtual_joy started topic=joy rate=20.0Hz
+[INFO] [1791202537.184231225] [virtual_joy_jazzy_check.rover_gamepad]: rover_gamepad started joy_topic=joy twist_topic=rover_twist rate=100.0Hz
+{"name": "neutral", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10211.202189862, "stamp": [1791202538, 721192734], "axes": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "buttons": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10211.224757334, "value": [0.0, 0.0, 0.0]}, "status": "PASS"}
+{"name": "triangle_hold", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10211.752288004, "stamp": [1791202539, 271202354], "axes": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "buttons": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10211.754811266, "value": [0.1, 0.0, 0.0]}, "status": "PASS"}
+{"name": "release", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10212.252215364, "stamp": [1791202539, 771151308], "axes": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "buttons": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10212.254773277, "value": [0.0, 0.0, 0.0]}, "status": "PASS"}
+{"name": "cross_hold", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10212.752417469, "stamp": [1791202540, 271180339], "axes": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "buttons": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10212.764963525, "value": [-0.1, 0.0, 0.0]}, "status": "PASS"}
+{"name": "square_toggle", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10213.252577145, "stamp": [1791202540, 771281829], "axes": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "buttons": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10213.265012693, "value": [0.0, 0.0, 0.3]}, "status": "PASS"}
+{"name": "reset", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10213.802423293, "stamp": [1791202541, 321216220], "axes": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "buttons": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10213.794924159, "value": [0.0, 0.0, 0.0]}, "status": "PASS"}
+{"name": "circle_hold", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10214.302428727, "stamp": [1791202541, 821196398], "axes": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "buttons": [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10214.304742518, "value": [0.0, 0.0, -0.3]}, "status": "PASS"}
+{"name": "dpad_up", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10214.802108222, "stamp": [1791202542, 321156898], "axes": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0], "buttons": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10214.804703783, "value": [0.3, 0.0, 0.0]}, "status": "PASS"}
+{"name": "dpad_down", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10215.302241583, "stamp": [1791202542, 821181240], "axes": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0], "buttons": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10215.304753, "value": [-0.3, 0.0, 0.0]}, "status": "PASS"}
+{"name": "stick_disabled", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10215.802326811, "stamp": [1791202543, 321161923], "axes": [0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "buttons": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10215.804690052, "value": [0.0, 0.0, 0.0]}, "status": "PASS"}
+{"name": "r1_left_forward", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10216.302339029, "stamp": [1791202543, 821300421], "axes": [0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "buttons": [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10216.314858879, "value": [0.25, 0.0, 0.0]}, "status": "PASS"}
+{"name": "r1_right_rotation", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10216.802388061, "stamp": [1791202544, 321290936], "axes": [0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0], "buttons": [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10216.814952974, "value": [0.0, 0.0, -0.26]}, "status": "PASS"}
+{"name": "forward_before_timeout", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10217.302396814, "stamp": [1791202544, 821303670], "axes": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "buttons": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10217.31471331, "value": [0.1, 0.0, 0.0]}, "status": "PASS"}
+{"name": "lateral_before_timeout", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10219.125375632, "stamp": [1791202546, 644461401], "axes": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0], "buttons": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10219.164848737, "value": [0.0, 0.3, 0.0]}, "status": "PASS"}
+{"name": "lateral_timeout", "seconds_without_joy": 1.3502204209999036, "expected_if_all_motion_components_stopped": [0, 0, 0], "observed_twist": [0.0, 0.0, 0.0], "linear_y_remains_nonzero": false, "classification": "existing source behavior; separate from Jazzy compatibility criteria"}
+{"name": "resume_after_timeout", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10220.988829536, "stamp": [1791202548, 507526799], "axes": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "buttons": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10221.034847853, "value": [0.1, 0.0, 0.0]}, "status": "PASS"}
+{"name": "angular_before_timeout", "input_method": "SharedJoyState application-state API; no mouse/keyboard event", "joy": {"time": 10221.485735228, "stamp": [1791202549, 4760949], "axes": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "buttons": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "twist": {"time": 10221.534926016, "value": [0.0, 0.0, 0.3]}, "status": "PASS"}
+{
+  "software_compatibility": "PASS",
+  "windows_desktop_and_manual_mouse_operation": "UNVERIFIED",
+  "physical_rover": "UNVERIFIED",
+  "readme_launch": {
+    "command": [
+      "ros2",
+      "launch",
+      "/root/virtual_joy_jazzy_evidence/JAZZY-002-5982018/isolated_readme_launch.py"
+    ],
+    "wrapper_sha256": "5a2df1cb71d43ce62cce4b9874b7e01a07ebf3fdc8358e833598535b7a16e6f0",
+    "measurement_seconds": 4.001355553000394,
+    "joy_messages": 80,
+    "joy_hz": 19.99322453112482,
+    "twist_messages": 401,
+    "twist_hz": 100.21603796226316,
+    "joy_topic": "/virtual_joy_jazzy_check/joy",
+    "twist_topic": "/virtual_joy_jazzy_check/rover_twist",
+    "status": "PASS"
+  },
+  "state_runtime": {
+    "cases": [
+      {
+        "name": "neutral",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10211.202189862,
+          "stamp": [
+            1791202538,
+            721192734
+          ],
+          "axes": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buttons": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10211.224757334,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "triangle_hold",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10211.752288004,
+          "stamp": [
+            1791202539,
+            271202354
+          ],
+          "axes": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buttons": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10211.754811266,
+          "value": [
+            0.1,
+            0.0,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "release",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10212.252215364,
+          "stamp": [
+            1791202539,
+            771151308
+          ],
+          "axes": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buttons": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10212.254773277,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "cross_hold",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10212.752417469,
+          "stamp": [
+            1791202540,
+            271180339
+          ],
+          "axes": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buttons": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10212.764963525,
+          "value": [
+            -0.1,
+            0.0,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "square_toggle",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10213.252577145,
+          "stamp": [
+            1791202540,
+            771281829
+          ],
+          "axes": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buttons": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10213.265012693,
+          "value": [
+            0.0,
+            0.0,
+            0.3
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "reset",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10213.802423293,
+          "stamp": [
+            1791202541,
+            321216220
+          ],
+          "axes": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buttons": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10213.794924159,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "circle_hold",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10214.302428727,
+          "stamp": [
+            1791202541,
+            821196398
+          ],
+          "axes": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buttons": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10214.304742518,
+          "value": [
+            0.0,
+            0.0,
+            -0.3
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "dpad_up",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10214.802108222,
+          "stamp": [
+            1791202542,
+            321156898
+          ],
+          "axes": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "buttons": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10214.804703783,
+          "value": [
+            0.3,
+            0.0,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "dpad_down",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10215.302241583,
+          "stamp": [
+            1791202542,
+            821181240
+          ],
+          "axes": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "buttons": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10215.304753,
+          "value": [
+            -0.3,
+            0.0,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "stick_disabled",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10215.802326811,
+          "stamp": [
+            1791202543,
+            321161923
+          ],
+          "axes": [
+            0.0,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buttons": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10215.804690052,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "r1_left_forward",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10216.302339029,
+          "stamp": [
+            1791202543,
+            821300421
+          ],
+          "axes": [
+            0.0,
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buttons": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10216.314858879,
+          "value": [
+            0.25,
+            0.0,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "r1_right_rotation",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10216.802388061,
+          "stamp": [
+            1791202544,
+            321290936
+          ],
+          "axes": [
+            0.0,
+            0.0,
+            0.0,
+            0.25,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buttons": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10216.814952974,
+          "value": [
+            0.0,
+            0.0,
+            -0.26
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "forward_before_timeout",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10217.302396814,
+          "stamp": [
+            1791202544,
+            821303670
+          ],
+          "axes": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buttons": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10217.31471331,
+          "value": [
+            0.1,
+            0.0,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "forward_timeout",
+        "seconds_without_joy": 1.352871866998612,
+        "twist": {
+          "time": 10218.664882319,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "lateral_before_timeout",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10219.125375632,
+          "stamp": [
+            1791202546,
+            644461401
+          ],
+          "axes": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "buttons": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10219.164848737,
+          "value": [
+            0.0,
+            0.3,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "lateral_timeout",
+        "twist": {
+          "time": 10220.524850741,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "resume_after_timeout",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10220.988829536,
+          "stamp": [
+            1791202548,
+            507526799
+          ],
+          "axes": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buttons": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10221.034847853,
+          "value": [
+            0.1,
+            0.0,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "angular_before_timeout",
+        "input_method": "SharedJoyState application-state API; no mouse/keyboard event",
+        "joy": {
+          "time": 10221.485735228,
+          "stamp": [
+            1791202549,
+            4760949
+          ],
+          "axes": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buttons": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "twist": {
+          "time": 10221.534926016,
+          "value": [
+            0.0,
+            0.0,
+            0.3
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "angular_timeout",
+        "twist": {
+          "time": 10222.884720884,
+          "value": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "status": "PASS"
+      }
+    ],
+    "diagnostic": {
+      "name": "lateral_timeout",
+      "seconds_without_joy": 1.3502204209999036,
+      "expected_if_all_motion_components_stopped": [
+        0,
+        0,
+        0
+      ],
+      "observed_twist": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_y_remains_nonzero": false,
+      "classification": "existing source behavior; separate from Jazzy compatibility criteria"
+    },
+    "status": "PASS"
+  },
+  "source_status_after": "",
+  "files_unchanged": true,
+  "finish_utc": "2026-10-05T12:15:50Z"
+}

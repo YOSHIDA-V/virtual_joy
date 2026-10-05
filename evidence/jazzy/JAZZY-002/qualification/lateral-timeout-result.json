@@ -1,0 +1,16 @@
+{
+  "name": "lateral_timeout",
+  "seconds_without_joy": 1.3502204209999036,
+  "expected_if_all_motion_components_stopped": [
+    0,
+    0,
+    0
+  ],
+  "observed_twist": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "linear_y_remains_nonzero": false,
+  "classification": "existing source behavior; separate from Jazzy compatibility criteria"
+}
