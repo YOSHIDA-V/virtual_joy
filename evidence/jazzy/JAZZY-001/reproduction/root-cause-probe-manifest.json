@@ -1,0 +1,18 @@
+{
+  "pid": 6742,
+  "command": [
+    "/usr/bin/python3",
+    "/root/virtual_joy_jazzy_evidence/baseline-20261005T120702Z/JAZZY-001/signal_context_probe.py"
+  ],
+  "cwd": "/root/ros2_ws/src/virtual_joy",
+  "script_sha256": "c1021da7b2b6c392057be55005fe480005b7aef50409d7100d001a8aef3378f7",
+  "commit": "9b83e83ec2cb46527956c4d9da125545fdfb890e",
+  "start_utc": "2026-10-05T12:10:00Z",
+  "environment": {
+    "ROS_DISTRO": "jazzy",
+    "ROS_DOMAIN_ID": "100",
+    "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
+    "RMW_IMPLEMENTATION": "rmw_cyclonedds_cpp"
+  },
+  "exit_code": 0
+}

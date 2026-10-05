@@ -4,6 +4,7 @@ import threading
 import tkinter as tk
 
 import rclpy
+from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from sensor_msgs.msg import Joy
 
@@ -616,27 +617,39 @@ def main(args=None):
     shared_state = SharedJoyState()
     node = VirtualJoyNode(shared_state)
 
-    spin_thread = threading.Thread(target=rclpy.spin, args=(node,), daemon=True)
+    def spin():
+        try:
+            rclpy.spin(node)
+        except (KeyboardInterrupt, ExternalShutdownException):
+            pass
+
+    spin_thread = threading.Thread(target=spin, daemon=True)
     spin_thread.start()
 
     root = tk.Tk()
     VirtualJoyUI(root, shared_state)
 
     def on_close():
-        try:
-            node.destroy_node()
-            rclpy.shutdown()
-        except Exception:
-            pass
-        root.destroy()
+        root.quit()
+
+    def check_ros_context():
+        if not rclpy.ok():
+            root.quit()
+        else:
+            root.after(50, check_ros_context)
 
     root.protocol('WM_DELETE_WINDOW', on_close)
+    root.after(50, check_ros_context)
 
     try:
         root.mainloop()
+    except KeyboardInterrupt:
+        pass
     finally:
-        if spin_thread.is_alive():
-            spin_thread.join(timeout=1.0)
+        rclpy.try_shutdown()
+        spin_thread.join()
+        node.destroy_node()
+        root.destroy()
 
 
 if __name__ == '__main__':
