@@ -147,6 +147,7 @@ class RoverGamepadNode(Node):
             now = self.get_clock().now()
             if (now - self._last_time).nanoseconds / 1e9 > self._joy_timeout_sec:
                 self._current_cmd.linear.x = 0.0
+                self._current_cmd.linear.y = 0.0
                 self._current_cmd.angular.z = 0.0
 
             self._twist_pub.publish(self._current_cmd)
