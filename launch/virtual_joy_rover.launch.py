@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument, RegisterEventHandler, Shutdown
+from launch.event_handlers import OnProcessExit
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
+
+
+def _gui_exited(_event, context):
+    if context.is_shutdown:
+        return []
+    return [Shutdown(reason='virtual_joy GUI exited')]
 
 
 def generate_launch_description():
@@ -58,6 +65,7 @@ def generate_launch_description():
         topic_name_arg,
         joy_publish_rate_arg,
         cmd_publish_rate_arg,
+        RegisterEventHandler(OnProcessExit(target_action=joy_node, on_exit=_gui_exited)),
         joy_node,
         rover_gamepad,
     ])
