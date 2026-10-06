@@ -1,0 +1,17 @@
+[
+  {
+    "path": "/root/nonhardware-20261006/ws/src/megarover3_ros2",
+    "commit": "11c402d5657cf127478912207d1a289ed7380b1a",
+    "clean": true
+  },
+  {
+    "path": "/root/nonhardware-20261006/ws/src/virtual_joy",
+    "commit": "5baf45aa79e7ff0f18fe785ae2e4399633ccf5bd",
+    "clean": true
+  },
+  {
+    "path": "/root/nonhardware-20261006/ws/src/vs_rover_options_description",
+    "commit": "932a710473d1e68b86d78ab919a8442f457ee79f",
+    "clean": true
+  }
+]
