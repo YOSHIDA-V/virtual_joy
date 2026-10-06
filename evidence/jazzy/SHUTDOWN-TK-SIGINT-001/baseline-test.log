@@ -1,0 +1,55 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-7.4.4, pluggy-1.4.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /root/nonhardware-20261006/ws/src/virtual_joy
+plugins: ament-pep257-0.17.5, launch-testing-3.4.11, ament-lint-0.17.5, ament-xmllint-0.17.5, launch-testing-ros-0.26.12, ament-flake8-0.17.5, ament-copyright-0.17.5, typeguard-4.1.5, cov-4.1.0, colcon-core-0.21.3
+collecting ... collected 5 items / 4 deselected / 1 selected
+
+test/test_shutdown.py::ShutdownRaceTest::test_sigint_during_tk_redraw_has_no_callback_exception FAILED [100%]
+
+=================================== FAILURES ===================================
+___ ShutdownRaceTest.test_sigint_during_tk_redraw_has_no_callback_exception ____
+
+self = <test_shutdown.ShutdownRaceTest testMethod=test_sigint_during_tk_redraw_has_no_callback_exception>
+
+    def test_sigint_during_tk_redraw_has_no_callback_exception(self):
+        errors = []
+        armed = [False]
+        sent = [False]
+        original_tk = tk.Tk
+        original_redraw = gui.GamepadCanvas.redraw
+    
+        def redraw(canvas):
+            if armed[0] and not sent[0]:
+                sent[0] = True
+                os.kill(os.getpid(), signal.SIGINT)
+            return original_redraw(canvas)
+    
+        def create_root():
+            root = original_tk()
+            root.report_callback_exception = lambda kind, value, tb: errors.append(value)
+            root.after(100, lambda: armed.__setitem__(0, True))
+            # Fallback closes only this application's own window callback.
+            root.after(1000, root.quit)
+            return root
+    
+        with patch.object(gui.tk, 'Tk', side_effect=create_root), \
+                patch.object(gui.GamepadCanvas, 'redraw', new=redraw):
+            gui.main(args=['--ros-args', '-r', '__ns:=/virtual_joy_jazzy_shutdown_check'])
+        self.assertTrue(sent[0], 'signal must occur inside a real Tk redraw callback')
+>       self.assertEqual(errors, [], 'normal Ctrl+C must not escape a Tk callback')
+E       AssertionError: Lists differ: [KeyboardInterrupt()] != []
+E       
+E       First list contains 1 additional elements.
+E       First extra element 0:
+E       KeyboardInterrupt()
+E       
+E       - [KeyboardInterrupt()]
+E       + [] : normal Ctrl+C must not escape a Tk callback
+
+test/test_shutdown.py:97: AssertionError
+----------------------------- Captured stderr call -----------------------------
+[INFO] [1791306670.645465718] [virtual_joy_jazzy_shutdown_check.virtual_joy]: virtual_joy started topic=joy rate=20.0Hz
+=========================== short test summary info ============================
+FAILED test/test_shutdown.py::ShutdownRaceTest::test_sigint_during_tk_redraw_has_no_callback_exception
+======================= 1 failed, 4 deselected in 0.71s ========================
