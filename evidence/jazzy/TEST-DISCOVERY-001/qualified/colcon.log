@@ -1,0 +1,17 @@
+Starting >>> virtual_joy
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-7.4.4, pluggy-1.4.0
+cachedir: /root/nonhardware-20261006/ws/build/virtual_joy/.pytest_cache
+rootdir: /root/nonhardware-20261006/ws/src/virtual_joy
+plugins: ament-pep257-0.17.5, launch-testing-3.4.11, ament-lint-0.17.5, ament-xmllint-0.17.5, launch-testing-ros-0.26.12, ament-flake8-0.17.5, ament-copyright-0.17.5, typeguard-4.1.5, cov-4.1.0, colcon-core-0.21.3
+collected 9 items
+
+test/test_controller_ui.py .....                                         [ 55%]
+test/test_shutdown.py ....                                               [100%]
+
+- generated xml file: /root/nonhardware-20261006/ws/build/virtual_joy/pytest.xml -
+============================== 9 passed in 2.38s ===============================
+Finished <<< virtual_joy [4.40s]
+
+Summary: 1 package finished [4.83s]
+Summary: 9 tests, 0 errors, 0 failures, 0 skipped
