@@ -1,0 +1,93 @@
+[
+  {
+    "pid": 14880,
+    "process_group": 14880,
+    "session": 14880,
+    "argv": [
+      "/usr/bin/python3",
+      "/opt/ros/jazzy/bin/ros2",
+      "launch",
+      "virtual_joy",
+      "virtual_joy_rover.launch.py",
+      "launch-prefix:=setsid"
+    ],
+    "argument_file_hashes": {
+      "/usr/bin/python3": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+      "/opt/ros/jazzy/bin/ros2": "feb1de8738d0eec45a229e60206dcb0f0940ba7fd1032ea713e3bbe3f7713620"
+    },
+    "exe": "/usr/bin/python3.12",
+    "cwd": "/root/nonhardware-20261006/ws/src/megarover3_ros2",
+    "env": {
+      "DISPLAY": ":1",
+      "ROS_DOMAIN_ID": "100",
+      "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
+      "RMW_IMPLEMENTATION": "rmw_cyclonedds_cpp",
+      "GZ_PARTITION": "nonhardware_20261006",
+      "ROS_LOG_DIR": "/root/nonhardware-20261006/evidence/SHUTDOWN-SIGNALS-001/joy-ab/isolated-joy/ros"
+    },
+    "marker": "/root/nonhardware-20261006/evidence/SHUTDOWN-SIGNALS-001/joy-ab/isolated-joy/ros",
+    "exe_sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f"
+  },
+  {
+    "pid": 14891,
+    "process_group": 14891,
+    "session": 14891,
+    "argv": [
+      "/usr/bin/python3",
+      "/root/nonhardware-20261006/ws/install/virtual_joy/lib/virtual_joy/virtual_joy_node",
+      "--ros-args",
+      "-r",
+      "__node:=virtual_joy",
+      "--params-file",
+      "/tmp/launch_params_43pjs76g"
+    ],
+    "argument_file_hashes": {
+      "/usr/bin/python3": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+      "/root/nonhardware-20261006/ws/install/virtual_joy/lib/virtual_joy/virtual_joy_node": "96a35581c7a2e9ea7a1fe47ddccaa8216577f2cf87adb5d9fa202d4a61543852",
+      "/tmp/launch_params_43pjs76g": "5e284096e4a1cc848cf0c889bacdf99c6f09e3a20388224337b20a31c41794e3"
+    },
+    "exe": "/usr/bin/python3.12",
+    "cwd": "/root/nonhardware-20261006/ws/src/megarover3_ros2",
+    "env": {
+      "DISPLAY": ":1",
+      "ROS_DOMAIN_ID": "100",
+      "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
+      "RMW_IMPLEMENTATION": "rmw_cyclonedds_cpp",
+      "GZ_PARTITION": "nonhardware_20261006",
+      "ROS_LOG_DIR": "/root/nonhardware-20261006/evidence/SHUTDOWN-SIGNALS-001/joy-ab/isolated-joy/ros"
+    },
+    "marker": "/root/nonhardware-20261006/evidence/SHUTDOWN-SIGNALS-001/joy-ab/isolated-joy/ros",
+    "exe_sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f"
+  },
+  {
+    "pid": 14892,
+    "process_group": 14892,
+    "session": 14892,
+    "argv": [
+      "/usr/bin/python3",
+      "/root/nonhardware-20261006/ws/install/virtual_joy/lib/virtual_joy/rover_gamepad_node",
+      "--ros-args",
+      "-r",
+      "__node:=rover_gamepad",
+      "--params-file",
+      "/tmp/launch_params_73hgmc0j"
+    ],
+    "argument_file_hashes": {
+      "/usr/bin/python3": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+      "/root/nonhardware-20261006/ws/install/virtual_joy/lib/virtual_joy/rover_gamepad_node": "6c57e933d9b95e729ff01b2cf6fc4a6600674e9fa5d42fc63f8cf04de1f07197",
+      "/tmp/launch_params_73hgmc0j": "ae3aff502338b7466c18a01affc33d82fd8ecc09cbde0f44fff053d67324bd92"
+    },
+    "exe": "/usr/bin/python3.12",
+    "cwd": "/root/nonhardware-20261006/ws/src/megarover3_ros2",
+    "env": {
+      "DISPLAY": ":1",
+      "ROS_DOMAIN_ID": "100",
+      "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
+      "RMW_IMPLEMENTATION": "rmw_cyclonedds_cpp",
+      "GZ_PARTITION": "nonhardware_20261006",
+      "ROS_LOG_DIR": "/root/nonhardware-20261006/evidence/SHUTDOWN-SIGNALS-001/joy-ab/isolated-joy/ros"
+    },
+    "marker": "/root/nonhardware-20261006/evidence/SHUTDOWN-SIGNALS-001/joy-ab/isolated-joy/ros",
+    "exe_sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f"
+  }
+]

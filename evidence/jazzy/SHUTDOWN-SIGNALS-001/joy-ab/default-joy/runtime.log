@@ -1,0 +1,37 @@
+[INFO] [launch]: All log files can be found below /root/nonhardware-20261006/evidence/SHUTDOWN-SIGNALS-001/joy-ab/default-joy/ros/2026-10-06-12-00-23-677153-MSI-14836
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [virtual_joy_node-1]: process started with pid [14848]
+[INFO] [rover_gamepad_node-2]: process started with pid [14849]
+[rover_gamepad_node-2] [0m[INFO] [1791255624.886504712] [rover_gamepad]: rover_gamepad started joy_topic=joy twist_topic=rover_twist rate=100.0Hz[0m
+[virtual_joy_node-1] [0m[INFO] [1791255625.018837716] [virtual_joy]: virtual_joy started topic=joy rate=20.0Hz[0m
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [rover_gamepad_node-2]: sending signal 'SIGINT' to process[rover_gamepad_node-2]
+[INFO] [virtual_joy_node-1]: sending signal 'SIGINT' to process[virtual_joy_node-1]
+[rover_gamepad_node-2] Traceback (most recent call last):
+[rover_gamepad_node-2]   File "/root/nonhardware-20261006/ws/install/virtual_joy/lib/virtual_joy/rover_gamepad_node", line 33, in <module>
+[rover_gamepad_node-2]     sys.exit(load_entry_point('virtual-joy', 'console_scripts', 'rover_gamepad_node')())
+[rover_gamepad_node-2]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rover_gamepad_node-2]   File "/root/nonhardware-20261006/ws/build/virtual_joy/virtual_joy/rover_gamepad_node.py", line 168, in main
+[rover_gamepad_node-2]     node.destroy_node()
+[rover_gamepad_node-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/node.py", line 1962, in destroy_node
+[virtual_joy_node-1] Traceback (most recent call last):
+[virtual_joy_node-1]   File "/root/nonhardware-20261006/ws/install/virtual_joy/lib/virtual_joy/virtual_joy_node", line 33, in <module>
+[virtual_joy_node-1]     sys.exit(load_entry_point('virtual-joy', 'console_scripts', 'virtual_joy_node')())
+[virtual_joy_node-1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[virtual_joy_node-1]   File "/root/nonhardware-20261006/ws/build/virtual_joy/virtual_joy/virtual_joy_node.py", line 655, in main
+[virtual_joy_node-1]     node.destroy_node()
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/node.py", line 1962, in destroy_node
+[rover_gamepad_node-2]     self.destroy_service(self._services[0])
+[rover_gamepad_node-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/node.py", line 1886, in destroy_service
+[virtual_joy_node-1]     self.destroy_service(self._services[0])
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/node.py", line 1886, in destroy_service
+[virtual_joy_node-1]     service.destroy()
+[virtual_joy_node-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/service.py", line 123, in destroy
+[rover_gamepad_node-2]     service.destroy()
+[rover_gamepad_node-2]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/service.py", line 123, in destroy
+[rover_gamepad_node-2]     self.__service.destroy_when_not_in_use()
+[rover_gamepad_node-2] KeyboardInterrupt
+[virtual_joy_node-1]     self.__service.destroy_when_not_in_use()
+[virtual_joy_node-1] KeyboardInterrupt
+[ERROR] [rover_gamepad_node-2]: process has died [pid 14849, exit code -2, cmd '/root/nonhardware-20261006/ws/install/virtual_joy/lib/virtual_joy/rover_gamepad_node --ros-args -r __node:=rover_gamepad --params-file /tmp/launch_params_9wk9nbr5'].
+[ERROR] [virtual_joy_node-1]: process has died [pid 14848, exit code -2, cmd '/root/nonhardware-20261006/ws/install/virtual_joy/lib/virtual_joy/virtual_joy_node --ros-args -r __node:=virtual_joy --params-file /tmp/launch_params_j0n_6d65'].
