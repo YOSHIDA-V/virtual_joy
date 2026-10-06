@@ -31,6 +31,8 @@ def generate_launch_description():
         name='virtual_joy',
         output='screen',
         emulate_tty=True,
+        # launch forwards SIGINT; avoid also receiving the terminal group's SIGINT.
+        prefix='setsid',
         parameters=[{
             'topic_name': LaunchConfiguration('topic_name'),
             'publish_rate_hz': LaunchConfiguration('joy_publish_rate_hz'),
@@ -43,6 +45,7 @@ def generate_launch_description():
         name='rover_gamepad',
         output='screen',
         emulate_tty=True,
+        prefix='setsid',
         parameters=[{
             'joy_topic': LaunchConfiguration('topic_name'),
             'publish_rate': LaunchConfiguration('cmd_publish_rate'),
