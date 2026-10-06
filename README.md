@@ -101,6 +101,10 @@ ros2 launch virtual_joy virtual_joy_rover.launch.py
 ros2 launch virtual_joy virtual_joy_rover.launch.py topic_name:=joy cmd_publish_rate:=50.0
 ```
 
+2026-10-07のJazzy確認では、Tk描画コールバック中のSIGINT例外を修正し、
+回帰テスト10件と通常GUIの起動・Ctrl+C終了・再起動6回が合格しました。
+[終了処理の検証記録](evidence/jazzy/SHUTDOWN-TK-SIGINT-001/RESULTS.md)を参照してください。
+
 ## 動作確認
 
 Jazzyでの導入・検証結果と制約は[検証記録](evidence/jazzy/REPORT.md)を参照してください。
