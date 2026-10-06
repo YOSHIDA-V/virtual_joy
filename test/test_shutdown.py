@@ -3,6 +3,8 @@
 spin is replaced only to force the timing of the race; no input events or
 physical command topics are used. A virtual display is needed for the GUI tests.
 """
+import os
+import signal
 import threading
 import tkinter as tk
 import unittest
@@ -66,6 +68,33 @@ class ShutdownRaceTest(unittest.TestCase):
                     for job in root.tk.call('after', 'info'):
                         root.tk.call('after', 'cancel', job)
         return errors
+
+    def test_sigint_during_tk_redraw_has_no_callback_exception(self):
+        errors = []
+        armed = [False]
+        sent = [False]
+        original_tk = tk.Tk
+        original_redraw = gui.GamepadCanvas.redraw
+
+        def redraw(canvas):
+            if armed[0] and not sent[0]:
+                sent[0] = True
+                os.kill(os.getpid(), signal.SIGINT)
+            return original_redraw(canvas)
+
+        def create_root():
+            root = original_tk()
+            root.report_callback_exception = lambda kind, value, tb: errors.append(value)
+            root.after(100, lambda: armed.__setitem__(0, True))
+            # Fallback closes only this application's own window callback.
+            root.after(1000, root.quit)
+            return root
+
+        with patch.object(gui.tk, 'Tk', side_effect=create_root), \
+                patch.object(gui.GamepadCanvas, 'redraw', new=redraw):
+            gui.main(args=['--ros-args', '-r', '__ns:=/virtual_joy_jazzy_shutdown_check'])
+        self.assertTrue(sent[0], 'signal must occur inside a real Tk redraw callback')
+        self.assertEqual(errors, [], 'normal Ctrl+C must not escape a Tk callback')
 
     def test_gui_ignores_publish_failure_only_after_context_shutdown(self):
         self.assertEqual(self.run_gui(publish_after_context_shutdown), [])

@@ -1,0 +1,25 @@
+[INFO] [launch]: All log files can be found below /root/nonhardware-20261006/evidence/README-NONHARDWARE-20261007/basic/04-virtual-joy/ros/2026-10-07-02-06-59-489594-MSI-49927
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [setsid-1]: process started with pid [49938]
+[INFO] [setsid-2]: process started with pid [49939]
+[setsid-2] [0m[INFO] [1791306420.158617803] [rover_gamepad]: rover_gamepad started joy_topic=joy twist_topic=rover_twist rate=100.0Hz[0m
+[setsid-1] [0m[INFO] [1791306420.203655038] [virtual_joy]: virtual_joy started topic=joy rate=20.0Hz[0m
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [setsid-2]: sending signal 'SIGINT' to process[setsid-2]
+[INFO] [setsid-1]: sending signal 'SIGINT' to process[setsid-1]
+[setsid-1] Exception in Tkinter callback
+[setsid-1] Traceback (most recent call last):
+[setsid-1]   File "/usr/lib/python3.12/tkinter/__init__.py", line 1967, in __call__
+[setsid-1]     return self.func(*args)
+[setsid-1]            ^^^^^^^^^^^^^^^^
+[setsid-1]   File "/usr/lib/python3.12/tkinter/__init__.py", line 861, in callit
+[setsid-1]     func(*args)
+[setsid-1]   File "/root/nonhardware-20261006/ws/build/virtual_joy/virtual_joy/virtual_joy_node.py", line 612, in _refresh_ui
+[setsid-1]     self._gamepad.redraw()
+[setsid-1]   File "/root/nonhardware-20261006/ws/build/virtual_joy/virtual_joy/virtual_joy_node.py", line 422, in redraw
+[setsid-1]     self.delete('all')
+[setsid-1]   File "/usr/lib/python3.12/tkinter/__init__.py", line 2897, in delete
+[setsid-1]     self.tk.call((self._w, 'delete') + args)
+[setsid-1] KeyboardInterrupt
+[INFO] [setsid-2]: process has finished cleanly [pid 49939]
+[INFO] [setsid-1]: process has finished cleanly [pid 49938]
