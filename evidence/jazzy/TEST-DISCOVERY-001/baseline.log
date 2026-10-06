@@ -1,0 +1,18 @@
+Starting >>> virtual_joy
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.000s
+
+NO TESTS RAN
+--- stderr: virtual_joy
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.000s
+
+NO TESTS RAN
+---
+Failed   <<< virtual_joy [1.07s, exited with code 5]
+
+Summary: 0 packages finished [1.53s]
+  1 package failed: virtual_joy
+  1 package had stderr output: virtual_joy
