@@ -1,0 +1,11 @@
+[INFO] [launch]: All log files can be found below /root/nonhardware-20261006/evidence/SHUTDOWN-TK-SIGINT-001/fixed-launch-2/07-joy-restart/ros/2026-10-07-02-12-58-479224-MSI-50817
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [setsid-1]: process started with pid [50828]
+[INFO] [setsid-2]: process started with pid [50829]
+[setsid-2] [0m[INFO] [1791306779.106306034] [rover_gamepad]: rover_gamepad started joy_topic=joy twist_topic=rover_twist rate=100.0Hz[0m
+[setsid-1] [0m[INFO] [1791306779.138959836] [virtual_joy]: virtual_joy started topic=joy rate=20.0Hz[0m
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [setsid-2]: sending signal 'SIGINT' to process[setsid-2]
+[INFO] [setsid-1]: sending signal 'SIGINT' to process[setsid-1]
+[INFO] [setsid-2]: process has finished cleanly [pid 50829]
+[INFO] [setsid-1]: process has finished cleanly [pid 50828]

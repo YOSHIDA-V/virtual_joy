@@ -1,0 +1,19 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-7.4.4, pluggy-1.4.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /root/nonhardware-20261006/ws/src/virtual_joy
+plugins: ament-pep257-0.17.5, launch-testing-3.4.11, ament-lint-0.17.5, ament-xmllint-0.17.5, launch-testing-ros-0.26.12, ament-flake8-0.17.5, ament-copyright-0.17.5, typeguard-4.1.5, cov-4.1.0, colcon-core-0.21.3
+collecting ... collected 10 items
+
+test/test_controller_ui.py::ControllerGeometryTest::test_all_visible_buttons_have_one_geometry PASSED [ 10%]
+test/test_controller_ui.py::ControllerGeometryTest::test_control_keys_are_unique PASSED [ 20%]
+test/test_controller_ui.py::ControllerGeometryTest::test_shapes_are_nonempty_and_inside_canvas PASSED [ 30%]
+test/test_controller_ui.py::ControllerGeometryTest::test_stacked_layout_preserves_reference_scale PASSED [ 40%]
+test/test_controller_ui.py::ControllerGeometryTest::test_wide_layout_uses_width_without_distortion PASSED [ 50%]
+test/test_shutdown.py::ShutdownRaceTest::test_gui_ignores_publish_failure_only_after_context_shutdown PASSED [ 60%]
+test/test_shutdown.py::ShutdownRaceTest::test_gui_preserves_live_context_publish_failure PASSED [ 70%]
+test/test_shutdown.py::ShutdownRaceTest::test_rover_ignores_publish_failure_only_after_context_shutdown PASSED [ 80%]
+test/test_shutdown.py::ShutdownRaceTest::test_rover_preserves_live_context_publish_failure PASSED [ 90%]
+test/test_shutdown.py::ShutdownRaceTest::test_sigint_during_tk_redraw_has_no_callback_exception PASSED [100%]
+
+============================== 10 passed in 1.60s ==============================

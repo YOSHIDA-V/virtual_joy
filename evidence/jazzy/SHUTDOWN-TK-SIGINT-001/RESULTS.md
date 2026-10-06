@@ -1,0 +1,6 @@
+# Controlled Jazzy GUI qualification
+Production candidate: d442172e60fa0a9c434e3cb23638cd131eb16dab.
+Failure: deterministic SIGINT injected inside a real Tk redraw callback produced KeyboardInterrupt before the fix. SDK rclpy default signal handling is disabled for this GUI entrypoint; SIGINT/SIGTERM handlers now record an exit request and Tk's existing poll quits its event loop. Publication mappings and rates are unchanged.
+Ubuntu24.04 / Jazzy / CycloneDDS / ROS_DOMAIN_ID=100 / local-only private test namespace.
+All ten tests passed, including preservation of live-context publication errors. Three ordinary launch/restart pairs (six GUI launch processes) passed unchanged Joy>=10Hz, Twist>=40Hz and zero idle command criteria, then SIGINT shutdown without traceback, escalation or residual owned children. Shutdown times: 0.768836, 0.365991, 0.415926, 0.416084, 0.365691, 0.365418 seconds.
+No user mouse/keyboard input or real hardware was exercised. Main/Humble is unchanged. This is controlled software qualification, not physical rover verification.
