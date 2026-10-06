@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import signal
 import threading
 import tkinter as tk
 
@@ -7,6 +8,7 @@ import rclpy
 from rclpy.executors import ExternalShutdownException
 from rclpy.impl.implementation_singleton import rclpy_implementation as _rclpy
 from rclpy.node import Node
+from rclpy.signals import SignalHandlerOptions
 from sensor_msgs.msg import Joy
 
 try:
@@ -614,7 +616,16 @@ class VirtualJoyUI:
 
 
 def main(args=None):
-    rclpy.init(args=args)
+    # SIGINT must not raise asynchronously inside a Tcl/Tk callback.
+    rclpy.init(args=args, signal_handler_options=SignalHandlerOptions.NO)
+    stop_requested = False
+
+    def request_stop(signum, frame):
+        nonlocal stop_requested
+        stop_requested = True
+
+    old_handlers = {sig: signal.signal(sig, request_stop)
+                    for sig in (signal.SIGINT, signal.SIGTERM)}
     shared_state = SharedJoyState()
     node = VirtualJoyNode(shared_state)
 
@@ -637,7 +648,7 @@ def main(args=None):
         root.quit()
 
     def check_ros_context():
-        if not rclpy.ok():
+        if stop_requested or not rclpy.ok():
             root.quit()
         else:
             root.after(50, check_ros_context)
@@ -654,6 +665,8 @@ def main(args=None):
         spin_thread.join()
         node.destroy_node()
         root.destroy()
+        for sig, handler in old_handlers.items():
+            signal.signal(sig, handler)
 
 
 if __name__ == '__main__':
