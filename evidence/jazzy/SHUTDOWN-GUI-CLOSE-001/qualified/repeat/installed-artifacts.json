@@ -1,0 +1,694 @@
+{
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/local_setup.zsh": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover_description/ament_cmake_environment_hooks/local_setup.zsh",
+    "sha256": "56942873096201f4e7fe5e7b9bd87e56cc42ced33fadb53fbc25766fd9149c81"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/package.zsh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/package.zsh",
+    "sha256": "2c9b39109963d2af721040457ebc72f31de17ce84d7beac22150710b0dbc42a0"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/package.ps1": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/package.ps1",
+    "sha256": "c80fab926d51f1a2d739e56f71e83d9d7d0b9a21100b583a7c1ac504f9b095f2"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/local_setup.bash": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover_description/ament_cmake_environment_hooks/local_setup.bash",
+    "sha256": "41b30b6c107da94a2478e43953b8cbd0d920f5e8fc1ea847c61a213623d623b0"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/package.bash": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/package.bash",
+    "sha256": "712c5ce2b4a80f58bbdbff67d30254efe410deaefbe9ad9658d8bb31db4a39db"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/package.xml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/package.xml",
+    "sha256": "4883315b4164b7503b7d2bb8334a93d55d3f6e0cb3b9eb913a5b74d28c76fcea"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/package.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/package.dsv",
+    "sha256": "e78cbdc19eb8978d899d56eaf49e2e3fec037b5ef91937cd06b1799c608a5e43"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/local_setup.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover_description/ament_cmake_environment_hooks/local_setup.sh",
+    "sha256": "8bc45ca6c943a8884bc541d0116fa8bbbd13b06e5d2bd952e257d73e2ed85df7"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/package.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/package.sh",
+    "sha256": "28342129b63502d52fe1e6958666685f239aad10d074295939da77d6230c3d51"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/local_setup.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover_description/ament_cmake_environment_hooks/local_setup.dsv",
+    "sha256": "02fc1a0732a535752d5a871b4b5e20c5d5c5268aa1aa8997ddbf4c1557b51254"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/environment/path.sh": {
+    "resolved": "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh",
+    "sha256": "abe10a0452bc4b93f665fc343a7e6d32fe3f3a2b6beb90d338044a71d2583f18"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/environment/path.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover_description/ament_cmake_environment_hooks/path.dsv",
+    "sha256": "3f2cdf6234ea2525c1670c140b6a03700d98a2408e7a232107791fa96c08b58b"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/environment/ament_prefix_path.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover_description/ament_cmake_environment_hooks/ament_prefix_path.dsv",
+    "sha256": "c4797d0a0670c70b4d3bcb5b7d47563635c7950595603f3af66f70af546ad57e"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/environment/ament_prefix_path.sh": {
+    "resolved": "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh",
+    "sha256": "6658f14efe913e291c0bf2c74059a9e14fb8abdb5a31628bef61d3b41e206679"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/launch/display.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/launch/display.launch.py",
+    "sha256": "605581f026e806db48c4764762c8d222e776a444c732ad1bbe6f9c8bb4ebf13c"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/rviz/s40a_lb.rviz": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/rviz/s40a_lb.rviz",
+    "sha256": "7d837690bf0a5bd648665a43ffd8e311cf82a2dba7785b6eebdba74eb254a646"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/rviz/f120a.rviz": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/rviz/f120a.rviz",
+    "sha256": "634555013f0dd8695d97b910fd05406371b015c5b948eb717e4f4a721b62b7d6"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/rviz/mega3.rviz": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/rviz/mega3.rviz",
+    "sha256": "7d837690bf0a5bd648665a43ffd8e311cf82a2dba7785b6eebdba74eb254a646"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/params/rover_twist_relay.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/params/rover_twist_relay.py",
+    "sha256": "3cf67cb0e3bc5e5e6e392de0cf30d645e7278e1bdb6fc9fd989b7ef5392743f6"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/params/rover_twist_relay.yaml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/params/rover_twist_relay.yaml",
+    "sha256": "bcfa11fe2efb189ae0b971eec77ebf2fe7ef07efe84884a10cc7471b88af1dea"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/params/controllers.yaml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/params/controllers.yaml",
+    "sha256": "adf4b3a62223548f7a8268651aff5da7a49774dc055f7106ac70d442cdc3862d"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/cmake/megarover_descriptionConfig-version.cmake": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover_description/ament_cmake_core/megarover_descriptionConfig-version.cmake",
+    "sha256": "c7c259c1826cda1af1238f0f825314536cda29b079ceaf36a8ba6f7dbe1575e5"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/cmake/megarover_descriptionConfig.cmake": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover_description/ament_cmake_core/megarover_descriptionConfig.cmake",
+    "sha256": "20df43fee63d6e60d3fa0861d9ebc7d0eb8bbb786b3f3b3f904f7c4d5a070925"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/urdf/f120a_ros2_control.xacro": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/urdf/f120a_ros2_control.xacro",
+    "sha256": "3ac3a304b133b46b7b9ebfaaf523cd12041f777bdf66f45829c84acc4a07acb8"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/urdf/f120a.xacro": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/urdf/f120a.xacro",
+    "sha256": "63fed3de91343add069c5fa08ac605f3cb2614cf95ee1b5cc0006d7d728f57dd"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/urdf/s40a_lb.xacro": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/urdf/s40a_lb.xacro",
+    "sha256": "973d3d3e1d1a4b1dff03c7bbff7b5f64bb80bddfc740adb57f859d04eaa3f207"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/urdf/s40a_lb.gazebo": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/urdf/s40a_lb.gazebo",
+    "sha256": "212050ac31b847447425d585fa068bb170b68e671aeaeef867655b129c5593b1"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/urdf/mega3.xacro": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/urdf/mega3.xacro",
+    "sha256": "74c8beec86302bcf7a5e69a111d69a2b786656ba75bc9ebb154ed38fdb621884"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/urdf/s40a_lb_ros2_control.xacro": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/urdf/s40a_lb_ros2_control.xacro",
+    "sha256": "ae7791a1ed96858d8ae1c196ec60022ed99ad99e432caeab61d4ce2d17a3b35a"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/urdf/mega3.gazebo": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/urdf/mega3.gazebo",
+    "sha256": "365976c5bac9463eb0cda0e1a60ea3e916884a415d30a5472a37ba2dcbb27165"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/urdf/materials.xacro": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/urdf/materials.xacro",
+    "sha256": "14a5c804d440c5ffffea4e8ab67d1ad69ec591d6f1e8e41ab88c272c9dc218fa"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/urdf/mega3_ros2_control.xacro": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/urdf/mega3_ros2_control.xacro",
+    "sha256": "a542a2fe0391740e89e07d553ddb435a88eb21ccf7f9f2cbb3ca2a76655da0cd"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/urdf/f120a.gazebo": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/urdf/f120a.gazebo",
+    "sha256": "d8a5ced11df8171a8c73bb31d0110dc6511f328014be4ee85b9fe38d2d5bc44f"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/hook/cmake_prefix_path.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/hook/cmake_prefix_path.sh",
+    "sha256": "ee9849def404b669097010f38735aa521e0731366a319b6e1abe996c793494b2"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/hook/cmake_prefix_path.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/hook/cmake_prefix_path.dsv",
+    "sha256": "7ab2eb0a25c282f9a5bf62596b4c098865cd3a8aa5740601a9efa8620acd69d3"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/hook/cmake_prefix_path.ps1": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/hook/cmake_prefix_path.ps1",
+    "sha256": "0c7394c1d89765deec81cb10e59a36d0d98867690b4b8781d5bc9186fc67885a"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/meshes/s40a_lb/lrf_mount.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/meshes/s40a_lb/lrf_mount.stl",
+    "sha256": "043e2b99f6cd7a4038a09d0597357c9f1bbf75345799a2a7453a1dacaca79505"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/meshes/s40a_lb/sus.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/meshes/s40a_lb/sus.stl",
+    "sha256": "6a5d589b58415e8636f65ef7c5b6366d79a5147843e9c3b2015938243c6b47e4"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/meshes/s40a_lb/caster_sus.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/meshes/s40a_lb/caster_sus.stl",
+    "sha256": "7070cfb6be9be145a4519b45fbf579ac4e2deb8d7585718f169f1e62b8e97b8f"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/meshes/s40a_lb/caster_frame.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/meshes/s40a_lb/caster_frame.stl",
+    "sha256": "06ae3d6ee5a01dfed3af7cff5f3abc5f615ff217f0ed6e7b483476fea6cad0b0"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/meshes/s40a_lb/caster_wheel.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/meshes/s40a_lb/caster_wheel.stl",
+    "sha256": "1377fc8f5301c40a149cf6d951f637e0dc692f91260544198906bccab64f21e2"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/meshes/s40a_lb/wheel.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/meshes/s40a_lb/wheel.stl",
+    "sha256": "4a4d0fe5d338da2d6c13c9e920859f73fbdbdb5c3f1a7d936eb41120d271a7c0"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/meshes/s40a_lb/base_link.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/meshes/s40a_lb/base_link.stl",
+    "sha256": "00d2a2470f76f4cce2aeef25a19967e5786be601d0305ebc12344cf9f9ab9bb3"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/meshes/mega3/right_wheel_1.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/meshes/mega3/right_wheel_1.stl",
+    "sha256": "81fd4b54db6ebe970ff7c6db848297cf533b14483e64bdf3574bfd251bf14457"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/meshes/mega3/left_wheel_1.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/meshes/mega3/left_wheel_1.stl",
+    "sha256": "c5d180764bb7fdd07153a6b6948e6a62427522c8035fbc8c26154bac61816e72"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/meshes/mega3/base_link.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/meshes/mega3/base_link.stl",
+    "sha256": "7c7096579140f4418a18288ccf478ebdf23e75e06f5f417f7d63bb019f5a4679"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/meshes/f120a/right_wheel_1.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/meshes/f120a/right_wheel_1.stl",
+    "sha256": "e8abf02965bcf261d88a6858a083ceb7fe620ab5a1a916447e53e4ed7f517424"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/meshes/f120a/left_wheel_1.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/meshes/f120a/left_wheel_1.stl",
+    "sha256": "4878399ea525145cd41fbae9e75b88a3a7f33317984403f617aae60bb2c97db1"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/share/megarover_description/meshes/f120a/base_link.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/meshes/f120a/base_link.stl",
+    "sha256": "8294b31104e4f2c76e4fc657978d203c962d39211c298343be2a508b1792af34"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover_description/lib/megarover_description/rover_twist_relay.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover_description/params/rover_twist_relay.py",
+    "sha256": "3cf67cb0e3bc5e5e6e392de0cf30d645e7278e1bdb6fc9fd989b7ef5392743f6"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/local_setup.zsh": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_bringup/ament_cmake_environment_hooks/local_setup.zsh",
+    "sha256": "56942873096201f4e7fe5e7b9bd87e56cc42ced33fadb53fbc25766fd9149c81"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/package.zsh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/package.zsh",
+    "sha256": "16ab1d700c298eadf86391b1af1e611db9b79ce41dae5d47bdcae40d213ef6c2"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/package.ps1": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/package.ps1",
+    "sha256": "a08e436fe7bb02046778a579d3f06333cd8544c1febd1e3c8d3fd4b0bb0fd10f"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/local_setup.bash": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_bringup/ament_cmake_environment_hooks/local_setup.bash",
+    "sha256": "41b30b6c107da94a2478e43953b8cbd0d920f5e8fc1ea847c61a213623d623b0"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/package.bash": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/package.bash",
+    "sha256": "d132ca5d66a6b32bbcd0e9342d7f6de61a619bf8beb18190467f3f62d661bd2b"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/package.xml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_bringup/package.xml",
+    "sha256": "2ec533789ad0ead5dc8a6bcd4d7ed21dd01f526cacb16e28a211ddd1ad151c54"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/package.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/package.dsv",
+    "sha256": "a76c2588d495d986fef300b59c7e17e21314ee089ad8faa509ba282ae3eae2fc"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/local_setup.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_bringup/ament_cmake_environment_hooks/local_setup.sh",
+    "sha256": "c7b43affccb369b5bedeccf80e09b3ecfeac907b0b51e17e59bc5f4979fcd87c"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/package.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/package.sh",
+    "sha256": "a8f04ff030cdef7aff599ef97596eb39d64aecc19031baaa0fd9597e11361e26"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/local_setup.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_bringup/ament_cmake_environment_hooks/local_setup.dsv",
+    "sha256": "df68311d0f2dea0277ce33083a62a90ebb5d8bce7fd32c941764f0fe78013168"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/environment/path.sh": {
+    "resolved": "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh",
+    "sha256": "abe10a0452bc4b93f665fc343a7e6d32fe3f3a2b6beb90d338044a71d2583f18"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/environment/path.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_bringup/ament_cmake_environment_hooks/path.dsv",
+    "sha256": "3f2cdf6234ea2525c1670c140b6a03700d98a2408e7a232107791fa96c08b58b"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/environment/ament_prefix_path.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_bringup/ament_cmake_environment_hooks/ament_prefix_path.dsv",
+    "sha256": "c4797d0a0670c70b4d3bcb5b7d47563635c7950595603f3af66f70af546ad57e"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/environment/ament_prefix_path.sh": {
+    "resolved": "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh",
+    "sha256": "6658f14efe913e291c0bf2c74059a9e14fb8abdb5a31628bef61d3b41e206679"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/launch/rover_gamepad.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_bringup/launch/rover_gamepad.launch.py",
+    "sha256": "9a97335978855da69b41be0fa289a87b182bcfe8abb7f7d010bef43b827e9d97"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/launch/ydlidar_tg30_launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_bringup/launch/ydlidar_tg30_launch.py",
+    "sha256": "66ba61ce4b386355857ba2c5fc37331f4e703d54ca6b9e631c616c579cd31b6f"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/launch/ydlidar_view.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_bringup/launch/ydlidar_view.launch.py",
+    "sha256": "f2fe47f14ba7912c59e3624bc5b8451b28d53bcd9a23339f5e929fe76e42e8d8"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/launch/mouse_teleop.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_bringup/launch/mouse_teleop.launch.py",
+    "sha256": "8c0298a555b8a42f5af0d3f207fb6e2199a4f837a69f5d6064d7da32742c1622"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/launch/robot.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_bringup/launch/robot.launch.py",
+    "sha256": "c1c556e7173d85e8be96b8839e506fdda1fcffa45f5b8b8348d3a2f03ec541de"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/launch/nav_robot.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_bringup/launch/nav_robot.launch.py",
+    "sha256": "25910a128b0f759a4484ba3e751a3c604493fb5fc26e75f3758c3a3538af5563"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/rviz/laser.rviz": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_bringup/rviz/laser.rviz",
+    "sha256": "abec1672ddf515339e5abf034a68d2592a063c4b804e275429755c4711b80cc0"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/rviz/s40a_lb.rviz": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_bringup/rviz/s40a_lb.rviz",
+    "sha256": "59839eff077b0a77b0104702000ba1f729bb8dbe76019148a2ca32f252c1a11e"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/rviz/f120a.rviz": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_bringup/rviz/f120a.rviz",
+    "sha256": "59839eff077b0a77b0104702000ba1f729bb8dbe76019148a2ca32f252c1a11e"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/rviz/mega3.rviz": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_bringup/rviz/mega3.rviz",
+    "sha256": "59839eff077b0a77b0104702000ba1f729bb8dbe76019148a2ca32f252c1a11e"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/params/TG30.yaml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_bringup/params/TG30.yaml",
+    "sha256": "7bc98a8866f838381b7069ec41849e7537f70f9d74d388d940526080e5c5671b"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/cmake/megarover3_bringupConfig-version.cmake": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_bringup/ament_cmake_core/megarover3_bringupConfig-version.cmake",
+    "sha256": "c7c259c1826cda1af1238f0f825314536cda29b079ceaf36a8ba6f7dbe1575e5"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/cmake/megarover3_bringupConfig.cmake": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_bringup/ament_cmake_core/megarover3_bringupConfig.cmake",
+    "sha256": "afa6f0847068d786f8d99f6db24b1fa8cf4e9a8e411fa225ce30c1ef96728aee"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/hook/cmake_prefix_path.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/hook/cmake_prefix_path.sh",
+    "sha256": "ee9849def404b669097010f38735aa521e0731366a319b6e1abe996c793494b2"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/hook/cmake_prefix_path.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/hook/cmake_prefix_path.dsv",
+    "sha256": "7ab2eb0a25c282f9a5bf62596b4c098865cd3a8aa5740601a9efa8620acd69d3"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/hook/cmake_prefix_path.ps1": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_bringup/share/megarover3_bringup/hook/cmake_prefix_path.ps1",
+    "sha256": "0c7394c1d89765deec81cb10e59a36d0d98867690b4b8781d5bc9186fc67885a"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/lib/megarover3_bringup/rover_gamepad_tty": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_bringup/rover_gamepad_tty",
+    "sha256": "d68bbf89009a019030fcb7d182aeee41bc764cccfe5fb56e3712aea2488ed66e"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/lib/megarover3_bringup/pub_odom": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_bringup/pub_odom",
+    "sha256": "433dfb13962a7d0f72bb00ebcab48c1f4f479228b99646e15a5d4e825d08f0ec"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/lib/megarover3_bringup/rover_gamepad": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_bringup/rover_gamepad",
+    "sha256": "d68bbf89009a019030fcb7d182aeee41bc764cccfe5fb56e3712aea2488ed66e"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_bringup/lib/megarover3_bringup/gazebo_odom_bridge": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_bringup/gazebo_odom_bridge",
+    "sha256": "693a6382bfe6c4ed348dbf72d958b5e6b7ca79cc1eafe5e003762f82dd55ad44"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/local_setup.zsh": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_navigation/ament_cmake_environment_hooks/local_setup.zsh",
+    "sha256": "56942873096201f4e7fe5e7b9bd87e56cc42ced33fadb53fbc25766fd9149c81"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/package.zsh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/package.zsh",
+    "sha256": "d7bcdc4e3dd63c2c96dfcfa855b372db16e573017e74dfb11b83d18f7c8f27bc"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/package.ps1": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/package.ps1",
+    "sha256": "122e669b011eec776cac28b56413d33eef803be45630fd660a0da35dcfdc54b5"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/local_setup.bash": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_navigation/ament_cmake_environment_hooks/local_setup.bash",
+    "sha256": "41b30b6c107da94a2478e43953b8cbd0d920f5e8fc1ea847c61a213623d623b0"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/package.bash": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/package.bash",
+    "sha256": "96c850538299cc666c8ef21ca4d329bc1ac54f483e4be4908d101eca19b023e0"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/package.xml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/package.xml",
+    "sha256": "ff07b2b56877d4526e7a1b2ebb3563d7d3b420d43873a01d808bbdc943d15164"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/package.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/package.dsv",
+    "sha256": "777ff71acaa719f863e95b9d2f12299abc893a0e9603ecf8dcedcae3696fa042"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/local_setup.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_navigation/ament_cmake_environment_hooks/local_setup.sh",
+    "sha256": "438dc6f0fbc2862e3167526b66527da38cf33c41a8e3762864e469ab1322161e"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/package.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/package.sh",
+    "sha256": "dcb2fc258566ddccac8cc1710ed3d68afb97972538854858a5c18fa0a7747ec9"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/local_setup.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_navigation/ament_cmake_environment_hooks/local_setup.dsv",
+    "sha256": "0a2165198503d5fe7d48b666625262c3bf81644bd90a6fefb381f7ba193dde57"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/environment/path.sh": {
+    "resolved": "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh",
+    "sha256": "abe10a0452bc4b93f665fc343a7e6d32fe3f3a2b6beb90d338044a71d2583f18"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/environment/path.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_navigation/ament_cmake_environment_hooks/path.dsv",
+    "sha256": "3f2cdf6234ea2525c1670c140b6a03700d98a2408e7a232107791fa96c08b58b"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/environment/ament_prefix_path.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_navigation/ament_cmake_environment_hooks/ament_prefix_path.dsv",
+    "sha256": "c4797d0a0670c70b4d3bcb5b7d47563635c7950595603f3af66f70af546ad57e"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/environment/ament_prefix_path.sh": {
+    "resolved": "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh",
+    "sha256": "6658f14efe913e291c0bf2c74059a9e14fb8abdb5a31628bef61d3b41e206679"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/launch/slam_sync.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/launch/slam_sync.launch.py",
+    "sha256": "6ae7e1536bf5c4efbd9e6be6d2a4c0c85670d4e46b7516a82afc4389abc72abb"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/launch/navigation.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/launch/navigation.launch.py",
+    "sha256": "f923f92d63e927bd0503f89dba870ca605e38e580d7c28f29ce693b5bece320f"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/launch/bringup_launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/launch/bringup_launch.py",
+    "sha256": "41f63a894edc9aa65daa6a33ad150e90a267ee43b3f6ab3911d3abd1e7ea9241"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/launch/slam.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/launch/slam.launch.py",
+    "sha256": "a816d15ef8baa03ba382b625785561efb2c8d23ff81aa695cd8d6e1eb741e544"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/rviz/gmapping.rviz": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/rviz/gmapping.rviz",
+    "sha256": "c77666b4165a043b17199d34de46b72f21666f2207413feca9bbab1bb9af48e8"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/rviz/nav2.rviz": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/rviz/nav2.rviz",
+    "sha256": "e5137e4c306738a6522f5c34648e1acb90adb39fdf57e17e318ad6e42adda729"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/rviz/slam.rviz": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/rviz/slam.rviz",
+    "sha256": "5e9c80938e16bb4c5a021370dbda76c5a8f836dedcf81826d441270ffdbf5ff0"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/maps/test.pgm": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/maps/test.pgm",
+    "sha256": "926cb380c811100ed0da765ad49348a44f6f6e505b9a92a192c2aa327a0686a8"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/maps/test.yaml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/maps/test.yaml",
+    "sha256": "8df06bc14d39142783ea75c4ac0334d6c563877fb14a540f0151bf29f0a1b6c9"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/cmake/megarover3_navigationConfig-version.cmake": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_navigation/ament_cmake_core/megarover3_navigationConfig-version.cmake",
+    "sha256": "1a056d80bda48cd54cf8af2013b223bfedc1cb17655e3a97b3aeae2c09a37c4c"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/cmake/megarover3_navigationConfig.cmake": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_navigation/ament_cmake_core/megarover3_navigationConfig.cmake",
+    "sha256": "76c8b86944cebe75d0b1810f624e52dc98d6567547b352d0d538464791ffd0ab"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/config/mega3_nav2_params.yaml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/config/mega3_nav2_params.yaml",
+    "sha256": "b9083e270cd94a66611bb1bc9aec6e1c22d4911ef184f02d678c83f22580c249"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/config/mapper_params_online_async.yaml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/config/mapper_params_online_async.yaml",
+    "sha256": "df82c0d570a52c3d47dd7d68ae4e3d03363594c3479f426a2aa04d01cc9eba0b"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/config/nav2_params.yaml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/config/nav2_params.yaml",
+    "sha256": "83868c5f2a6dd94ee8a47a77e121fcf5644c9648ef3440be7ed2ba156f868438"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/config/mapper_params_online_sync.yaml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/config/mapper_params_online_sync.yaml",
+    "sha256": "4b7915c8bbb598d0d6be5ab7bc7257b8deca6731311968f003ba68f9c6e73564"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/config/f120a_nav2_params.yaml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/config/f120a_nav2_params.yaml",
+    "sha256": "15d084b004ab6f6c5f85b8de03a528ffc615595c0949b266728f41f526a6ea47"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/config/s40a_lb_nav2_params.yaml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/config/s40a_lb_nav2_params.yaml",
+    "sha256": "5b72d33448be770d5050ce06a1ac748e0c16d22aafb7c3deab9a652dba8034c2"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/hook/cmake_prefix_path.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/hook/cmake_prefix_path.sh",
+    "sha256": "ee9849def404b669097010f38735aa521e0731366a319b6e1abe996c793494b2"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/hook/cmake_prefix_path.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/hook/cmake_prefix_path.dsv",
+    "sha256": "7ab2eb0a25c282f9a5bf62596b4c098865cd3a8aa5740601a9efa8620acd69d3"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/hook/cmake_prefix_path.ps1": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/hook/cmake_prefix_path.ps1",
+    "sha256": "0c7394c1d89765deec81cb10e59a36d0d98867690b4b8781d5bc9186fc67885a"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/launch/internal/nav2_stack.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/launch/internal/nav2_stack.launch.py",
+    "sha256": "d456055484ba70de4ba2d11042580dad8c23bdabed5e7488f3c6c25f4fcec245"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/launch/internal/slam_sync.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/launch/internal/slam_sync.launch.py",
+    "sha256": "2072672d5c008cc2f555deda6282b7fee9a1f99de02f1bd1a889b2a0928c3ec7"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/launch/internal/slam_async.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/launch/internal/slam_async.launch.py",
+    "sha256": "824233d0b016c6101290d33129e190929219ed8700fbdeebfba6f0e074490546"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_navigation/share/megarover3_navigation/launch/internal/localization_stack.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_navigation/launch/internal/localization_stack.launch.py",
+    "sha256": "a1f6917de8b3373db75a9ea1f45e7f4560538f6b0e8bfa4b73ec63f444c737d7"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/local_setup.zsh": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_gazebo/ament_cmake_environment_hooks/local_setup.zsh",
+    "sha256": "56942873096201f4e7fe5e7b9bd87e56cc42ced33fadb53fbc25766fd9149c81"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/package.zsh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/package.zsh",
+    "sha256": "5c72bdcd33ceda80fbbe9eb18e34ed217fcfa0f349f1deb55f3a565e563e5c42"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/package.ps1": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/package.ps1",
+    "sha256": "953b9180a385a9db72543a8a0227d5ca03590d46d6ac368df8c75cad9e7fd30c"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/local_setup.bash": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_gazebo/ament_cmake_environment_hooks/local_setup.bash",
+    "sha256": "41b30b6c107da94a2478e43953b8cbd0d920f5e8fc1ea847c61a213623d623b0"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/package.bash": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/package.bash",
+    "sha256": "83595b297b1295e159661814d3d13e783a42af86093f86379a92635b5b83367d"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/package.xml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/package.xml",
+    "sha256": "0c1f88ade6895479c1e29a231805962d1e36e9156bc2b7eab8eb0172ff7b25cf"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/package.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/package.dsv",
+    "sha256": "da83862eab02f78626142e78602ae80d0d03569ddc889cbac8e8e43d68b8c75f"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/local_setup.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_gazebo/ament_cmake_environment_hooks/local_setup.sh",
+    "sha256": "bbdbbf576e09c80db7a89c91c8d2360a52744cbbd5edac3bfd7fc946054d6e50"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/package.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/package.sh",
+    "sha256": "7eaf9f5b1b1194f6fd889f186f0b429fc47b970969272198827061485632c2d9"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/local_setup.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_gazebo/ament_cmake_environment_hooks/local_setup.dsv",
+    "sha256": "127fe32cce36d86357a6ae28ebd24695e06163e94a5992908ae65fc6e32d62b7"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/environment/path.sh": {
+    "resolved": "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh",
+    "sha256": "abe10a0452bc4b93f665fc343a7e6d32fe3f3a2b6beb90d338044a71d2583f18"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/environment/path.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_gazebo/ament_cmake_environment_hooks/path.dsv",
+    "sha256": "3f2cdf6234ea2525c1670c140b6a03700d98a2408e7a232107791fa96c08b58b"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/environment/ament_prefix_path.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_gazebo/ament_cmake_environment_hooks/ament_prefix_path.dsv",
+    "sha256": "c4797d0a0670c70b4d3bcb5b7d47563635c7950595603f3af66f70af546ad57e"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/environment/ament_prefix_path.sh": {
+    "resolved": "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh",
+    "sha256": "6658f14efe913e291c0bf2c74059a9e14fb8abdb5a31628bef61d3b41e206679"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/launch/gazebo_bringup.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/launch/gazebo_bringup.launch.py",
+    "sha256": "f12cc759adb6de41130f751a69417fe400171856cf2591ae3c9681598c52fbe4"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/launch/gazebo_nav.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/launch/gazebo_nav.launch.py",
+    "sha256": "83b29224e9c0c3a434afa15efdd520f79ca675a1094f97c27eab6bf2ed254668"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/launch/gazebo_slam.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/launch/gazebo_slam.launch.py",
+    "sha256": "514b630e92e90348666a66c7847b78d0de4e95b62a162448249d1fd2b5556aac"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/launch/gazebo_slam_nav.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/launch/gazebo_slam_nav.launch.py",
+    "sha256": "e57dc5bc181c1cdaef9d60c0c3189d7a5077ef6c4e6950f516badc20703c3079"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/launch/spawn_wall.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/launch/spawn_wall.launch.py",
+    "sha256": "a4e024ccee2cdb6e36b386f43143801499bb749dfbd6ecffe53edd458f172b6a"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/rviz/gmapping.rviz": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/rviz/gmapping.rviz",
+    "sha256": "cc5bcb3b505c6e7109fcce0761cf00b8f27b8ec385d16a2be426879ed2cc1b01"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/rviz/nav2.rviz": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/rviz/nav2.rviz",
+    "sha256": "fc4968e00a7a8c66f9fb8944e1fac88b0860a863cebb80a31920f4d05facb077"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/rviz/slam.rviz": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/rviz/slam.rviz",
+    "sha256": "e5b66b874af169fb5eb4c155df097b87b456904e86a576c3e8cc4588fa15056c"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/maps/test.pgm": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/maps/test.pgm",
+    "sha256": "926cb380c811100ed0da765ad49348a44f6f6e505b9a92a192c2aa327a0686a8"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/maps/test.yaml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/maps/test.yaml",
+    "sha256": "8df06bc14d39142783ea75c4ac0334d6c563877fb14a540f0151bf29f0a1b6c9"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/scripts/rover_twist_relay.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/scripts/rover_twist_relay.py",
+    "sha256": "f1cfd0588b7c621cfb60649377cb886a8751d1980ce4fe6b2a346e28585cf62e"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/scripts/harmonic_urdf.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/scripts/harmonic_urdf.py",
+    "sha256": "c916dbef3c5afaedbb51d1562f32c3fcf8641135037ddb57343e51648261029d"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/cmake/megarover3_gazeboConfig.cmake": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_gazebo/ament_cmake_core/megarover3_gazeboConfig.cmake",
+    "sha256": "f33f426d7286cc26cbc18af94ed50fba8fbd6e421f518cf1539085340fa2e258"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/cmake/megarover3_gazeboConfig-version.cmake": {
+    "resolved": "/root/nonhardware-20261006/ws/build/megarover3_gazebo/ament_cmake_core/megarover3_gazeboConfig-version.cmake",
+    "sha256": "55633e11f3fdb3563eb940f90b655a8fe76e4c04c159eff418a8218f7b7c2ccb"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/hook/cmake_prefix_path.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/hook/cmake_prefix_path.sh",
+    "sha256": "ee9849def404b669097010f38735aa521e0731366a319b6e1abe996c793494b2"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/hook/cmake_prefix_path.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/hook/cmake_prefix_path.dsv",
+    "sha256": "7ab2eb0a25c282f9a5bf62596b4c098865cd3a8aa5740601a9efa8620acd69d3"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/hook/cmake_prefix_path.ps1": {
+    "resolved": "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/hook/cmake_prefix_path.ps1",
+    "sha256": "0c7394c1d89765deec81cb10e59a36d0d98867690b4b8781d5bc9186fc67885a"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/worlds/empty.sdf": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/worlds/empty.sdf",
+    "sha256": "70c0bee9a68b9cb16e6cfe5d7f4a5d2931cd2a33b3200ff0436bc76d35529cb0"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/models/Wall.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/models/Wall.stl",
+    "sha256": "12043037cdc61b761f6c7e503f977ab0bced238a63c4684a09771355be6ef3b7"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/share/megarover3_gazebo/models/Wall2.stl": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/models/Wall2.stl",
+    "sha256": "c04cb18a0f238467d8d0ed13107f2dc0e6d2c8a195b0b99362058efb80eeb110"
+  },
+  "/root/nonhardware-20261006/ws/install/megarover3_gazebo/lib/megarover3_gazebo/rover_twist_relay.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/megarover3_ros2/megarover3_gazebo/scripts/rover_twist_relay.py",
+    "sha256": "f1cfd0588b7c621cfb60649377cb886a8751d1980ce4fe6b2a346e28585cf62e"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/package.zsh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/package.zsh",
+    "sha256": "a4eba4320069d47cb617dcc38c6007cac5f4e0edbbe9bc366160b6e89d3cb349"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/package.ps1": {
+    "resolved": "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/package.ps1",
+    "sha256": "2f0b1c7edd113d6b7f99237f973ec6be96dfb999f282522b6cbf16cc2e6668b2"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/package.bash": {
+    "resolved": "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/package.bash",
+    "sha256": "fff2b6c132b26abbee44e86a1273e2956fb838c1e491952b82b7fbe5c0b0409a"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/package.xml": {
+    "resolved": "/root/nonhardware-20261006/ws/src/virtual_joy/package.xml",
+    "sha256": "d689e8f229cdecb92592d003f32a499d5fc5785eb3650b4246f39a34a267174d"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/package.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/package.dsv",
+    "sha256": "03e672a86973f18653e3d3790876f022c465d3434bf273785b549019d2075a79"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/package.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/package.sh",
+    "sha256": "5e2179151d2f63e0bd6d2ae169bc65496e46fc5540a48bdf9d17094bba519253"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/launch/virtual_joy.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/virtual_joy/launch/virtual_joy.launch.py",
+    "sha256": "6e061b00a30cb3ecda7f4aa0feabf6c4ae332c63123ec56a9ba522e3d28e82f7"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/launch/virtual_joy_rover.launch.py": {
+    "resolved": "/root/nonhardware-20261006/ws/src/virtual_joy/launch/virtual_joy_rover.launch.py",
+    "sha256": "2502df1a8460acfb78b0eb9823e67e757a2e2e57eab492972a98a5cdce99ad72"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/hook/ament_prefix_path.ps1": {
+    "resolved": "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/hook/ament_prefix_path.ps1",
+    "sha256": "0aad623e5d52cbe955cc1d27b5002c3ce9a4c1f8de754b6afd4e6ac27e1eb2dd"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/hook/pythonpath.ps1": {
+    "resolved": "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/hook/pythonpath.ps1",
+    "sha256": "151b30bbc3f8389f5b3125f0a8f6512625f04d77be5c317187b409f8640b0cc9"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/hook/ament_prefix_path.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/hook/ament_prefix_path.dsv",
+    "sha256": "c4797d0a0670c70b4d3bcb5b7d47563635c7950595603f3af66f70af546ad57e"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/hook/pythonpath.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/hook/pythonpath.sh",
+    "sha256": "15a6191c43b0d92b5c726b638e710e045a711c8683875cfdead77f9e759e27aa"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/hook/pythonpath.dsv": {
+    "resolved": "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/hook/pythonpath.dsv",
+    "sha256": "070ebe43e03af540d1d1e1a820dcdba2b6fac511fcecc16664eea6fc0e9a6691"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/hook/ament_prefix_path.sh": {
+    "resolved": "/root/nonhardware-20261006/ws/install/virtual_joy/share/virtual_joy/hook/ament_prefix_path.sh",
+    "sha256": "c07f082a166d9644cabb3237d58e59177e5830868363f0fc32b646e1fb5cb3a5"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/lib/virtual_joy/rover_gamepad_node": {
+    "resolved": "/root/nonhardware-20261006/ws/install/virtual_joy/lib/virtual_joy/rover_gamepad_node",
+    "sha256": "6c57e933d9b95e729ff01b2cf6fc4a6600674e9fa5d42fc63f8cf04de1f07197"
+  },
+  "/root/nonhardware-20261006/ws/install/virtual_joy/lib/virtual_joy/virtual_joy_node": {
+    "resolved": "/root/nonhardware-20261006/ws/install/virtual_joy/lib/virtual_joy/virtual_joy_node",
+    "sha256": "96a35581c7a2e9ea7a1fe47ddccaa8216577f2cf87adb5d9fa202d4a61543852"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "name": "11-virtual-joy-window-close",
+  "command": [
+    "ros2",
+    "launch",
+    "virtual_joy",
+    "virtual_joy_rover.launch.py"
+  ],
+  "start_utc": "2026-10-06T03:23:38Z",
+  "cwd": "/root/nonhardware-20261006/ws/src/megarover3_ros2",
+  "phase": "finished",
+  "functional_pass": true,
+  "shutdown_pass": true,
+  "processes": [],
+  "no_desktop_input_synthesis": true,
+  "identity_before_launch": {
+    "commit": "5a3d69591a9de7be03d112b6456eb64424ff76f9",
+    "installed_artifacts_manifest_sha256": "572aa5dd62d6e8f4bde19fd06b646ffdc008599682871fee84848d07d1ef60cd",
+    "test_script_sha256": "30a58ed6baecf50130915fb030aa249cda4176a38d6dbad739cc2e1886508607"
+  },
+  "pid": 21089,
+  "environment": {
+    "DISPLAY": ":1",
+    "ROS_DOMAIN_ID": "100",
+    "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
+    "RMW_IMPLEMENTATION": "rmw_cyclonedds_cpp",
+    "GZ_PARTITION": "nonhardware_20261006",
+    "ROS_LOG_DIR": "/root/nonhardware-20261006/evidence/SHUTDOWN-GUI-CLOSE-001/fixed/close/11-virtual-joy-window-close/ros"
+  },
+  "window_lookup": {
+    "user_locale": "ja_JP.UTF-8",
+    "lookup_locale": "C",
+    "matched_windows": [
+      10485833
+    ]
+  },
+  "window": {
+    "id": "0xa00049",
+    "pid_property": "_NET_WM_PID:  not found.\n",
+    "none_before_test": true
+  },
+  "desktop": {
+    "display": ":1",
+    "width": 1600,
+    "height": 900,
+    "sha256": "55b1d1f21a7f8fb3a731a6441062ca2d05524475ce45d5a4a4c5e53543064024",
+    "local_file": "/root/nonhardware-20261006/evidence/SHUTDOWN-GUI-CLOSE-001/fixed/close/11-virtual-joy-window-close/before-close.png"
+  },
+  "after_window_close": {
+    "remaining_processes": [],
+    "new_joy_messages": 5,
+    "last_twist": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    }
+  },
+  "window_close_pass": true,
+  "signal_utc": "2026-10-06T03:23:44Z",
+  "termination_method": "foreground process-group SIGINT",
+  "shutdown_seconds": 9.031000445247628e-06,
+  "leftovers_after_sigint": [],
+  "leftovers_after_cleanup": [],
+  "exit_code": 0,
+  "escalation": [],
+  "error_lines": [],
+  "status": "PASS"
+}

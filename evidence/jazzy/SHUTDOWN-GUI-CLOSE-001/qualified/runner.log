@@ -1,0 +1,8 @@
+Starting >>> virtual_joy
+Finished <<< virtual_joy [12.2s]
+
+Summary: 1 package finished [13.6s]
+{"source_repos": 4, "installed_files": 178}
+{"name": "04-virtual-joy", "status": "PASS", "exit_code": 0, "shutdown_seconds": 0.5686095110013412, "escalation": [], "error_lines": []}
+{"name": "07-joy-restart", "status": "PASS", "exit_code": 0, "shutdown_seconds": 0.47117702799914696, "escalation": [], "error_lines": []}
+{"name": "11-virtual-joy-window-close", "status": "PASS", "exit_code": 0, "shutdown_seconds": 9.031000445247628e-06, "escalation": [], "error_lines": []}
